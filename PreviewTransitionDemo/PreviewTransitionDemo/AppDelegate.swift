@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+  
   private func configureNavigationBar() {
     
     UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)

@@ -68,6 +68,12 @@ public extension PTTableViewController {
 
 extension PTTableViewController {
   
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+  }
+  
   public override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
