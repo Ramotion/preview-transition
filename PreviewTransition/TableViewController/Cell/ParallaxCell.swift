@@ -42,7 +42,6 @@ public class ParallaxCell: UITableViewCell {
   
   @IBInspectable public var foregroundColor = UIColor.blackColor()
   @IBInspectable public var foregroundAlpha: CGFloat = 0.5
-  @IBInspectable public var titleLabelColor = UIColor.whiteColor()
   
   internal var foregroundView: UIView?
   internal var isMovedHidden: Bool = false
@@ -200,6 +199,7 @@ extension ParallaxCell {
 extension ParallaxCell {
   
   private func createBckgroundImage() -> UIImageView {
+    
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .Center
@@ -208,13 +208,16 @@ extension ParallaxCell {
   }
   
   private func createTitleLable() -> UILabel {
+    
     let label = UILabel()
     label.backgroundColor = .clearColor()
-    label.textColor = titleLabelColor
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .Center
     if case let font as UIFont = UINavigationBar.appearance().titleTextAttributes?[NSFontAttributeName] {
       label.font = font
+    }
+    if case let textColor as UIColor = UINavigationBar.appearance().titleTextAttributes?[NSForegroundColorAttributeName] {
+      label.textColor = textColor
     }
     contentView.addSubview(label)
     return label

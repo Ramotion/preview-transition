@@ -27,7 +27,6 @@ public class PTTableViewController: UITableViewController {
   
   internal var currentCell: ParallaxCell?
   
-  internal var currentTitleLabel: MovingLabel? // laber witch move up to navigation bar
   internal var currentSeparatorView: MovingView? // separator witch move up to navigation bar
   
   private var duration: Double = 0.65
@@ -91,12 +90,14 @@ extension PTTableViewController {
     let label = MovingLabel(frame: CGRect(x: 0, y: yPosition, width: UIScreen.mainScreen().bounds.size.width, height: 44))
     label.textAlignment = .Center
     label.backgroundColor = .clearColor()
-    if let font = cell.parallaxTitle?.font, let text = cell.parallaxTitle?.text {
+    if let font = cell.parallaxTitle?.font,
+      let text = cell.parallaxTitle?.text,
+      let textColor = cell.parallaxTitle?.textColor {
       label.font = font
       label.text = text
+      label.textColor = textColor
     }
     
-    label.textColor = .whiteColor()
     navigationController?.view.addSubview(label)
     return label
   }
