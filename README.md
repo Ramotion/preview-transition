@@ -36,12 +36,10 @@ public override func tableView(tableView: UITableView, cellForRowAtIndexPath ind
  
 4) add ParallaxCell
 
-if use Strorybords
-
+strorybords: 
 create cell and inheriting from ParallaxCell, don't forget set identifier <CellIdentifier>
 
-if programmatically
-
+or programmatically: 
 register cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReuseIdentifier:<CellIdentifier>)```
 
 5) set cell height for example 240
