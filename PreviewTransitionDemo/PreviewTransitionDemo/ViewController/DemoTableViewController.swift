@@ -28,12 +28,6 @@ public class DemoTableViewController: PTTableViewController {
   private let items = ["1", "2", "3", "4", "5"] // image names
 }
 
-// MARK: configurate 
-
-extension PTTableViewController {
-  
-}
-
 // MARK: UITableViewDelegate
 
 extension DemoTableViewController {
