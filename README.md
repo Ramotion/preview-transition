@@ -10,6 +10,12 @@
 Preview-transision is released under the MIT license.
 See [LICENSE](./LICENSE) for details.
 
+Just add the Source folder to your project.
+
+or use [CocoaPods](https://cocoapods.org) with Podfile:
+``` ruby
+pod 'PreviewTransition', '~> 0.0.1'
+```
 
 ## About
 The project maintained by [app development agency](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transision) [Ramotion Inc.](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transision)
