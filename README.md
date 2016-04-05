@@ -47,7 +47,8 @@ register cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReu
 5) set cell height for example 240
 
 6) create image names (image size must be equal screen size or bigger)
-let images = [<image name>, <image name>, <image name>, <image name>, <image name>] // image names
+
+let images = [image_name, image_name, image_name, image_name, image_name] // image names
 
 7) set image and text for ParallaxCell
 
@@ -65,8 +66,9 @@ public override func tableView(tableView: UITableView, willDisplayCell cell: UIT
     }
 }
 ```
-your tableViewController must be look like DemoTableViewController ссылка на файл
-(method public override func tableView(tableView: didSelectRowAtIndexPath indexPath:) we add later)
+your tableViewController must be look like [DemoTableViewController](https://github.com/Ramotion/preview-transision/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift) 
+
+(method ```public override func tableView(tableView: didSelectRowAtIndexPath indexPath:)``` we will add later)
 
 8) Create UIViewController inherit, inheriting from ```PTDetailViewController```
 
