@@ -44,6 +44,7 @@ extension  PTDetailViewController {
     if let titleText = self.titleText {
       title = titleText
     }
+    
     // hack 
     if let navigationController = self.navigationController {
       for case let label as UILabel in navigationController.view.subviews {
@@ -57,7 +58,7 @@ extension  PTDetailViewController {
 
 extension PTDetailViewController {
   
-  public func popViewcontroller() {
+  public func popViewController() {
     
     if let navigationController = self.navigationController {
       for case let label as UILabel in navigationController.view.subviews {

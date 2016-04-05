@@ -217,6 +217,7 @@ extension ParallaxCell {
     if case let font as UIFont = UINavigationBar.appearance().titleTextAttributes?[NSFontAttributeName] {
       label.font = font
     }
+    
     if case let textColor as UIColor = UINavigationBar.appearance().titleTextAttributes?[NSForegroundColorAttributeName] {
       label.textColor = textColor
     }

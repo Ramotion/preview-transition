@@ -35,6 +35,7 @@ extension DemoDetailViewController {
   
   public override func viewDidLoad() {
     super.viewDidLoad()
+    
     backButton = createBackButton()
     let buttonItem = UIBarButtonItem(customView: backButton!)
     navigationItem.leftBarButtonItem = buttonItem
@@ -66,6 +67,6 @@ extension DemoDetailViewController {
 extension DemoDetailViewController {
   
   func backButtonHandler() {
-    popViewcontroller()
+    popViewController()
   }
 }
