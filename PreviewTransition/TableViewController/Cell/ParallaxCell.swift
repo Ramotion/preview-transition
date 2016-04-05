@@ -69,6 +69,7 @@ extension ParallaxCell {
   internal func commonInit() {
     
     contentView.layer.masksToBounds = true
+    selectionStyle = .None
     
     // create background image view
     let backgroundImageView = createBckgroundImage()
