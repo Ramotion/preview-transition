@@ -23,6 +23,11 @@
 		84204E301CB28B5B001FC263 /* DemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E2D1CB28B5B001FC263 /* DemoDetailViewController.swift */; };
 		84204E311CB28B5B001FC263 /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E2E1CB28B5B001FC263 /* DemoTableViewController.swift */; };
 		84204E321CB28B5B001FC263 /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E2E1CB28B5B001FC263 /* DemoTableViewController.swift */; };
+		842D7E9B1CB395C800DE59DE /* ParallaxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E221CB289DC001FC263 /* ParallaxCell.swift */; };
+		842D7E9C1CB395D900DE59DE /* PTTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E271CB289DC001FC263 /* PTTableViewController.swift */; };
+		842D7E9D1CB395FC00DE59DE /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E241CB289DC001FC263 /* TimeExtensions.swift */; };
+		842D7E9E1CB3960200DE59DE /* MovingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E261CB289DC001FC263 /* MovingViews.swift */; };
+		842D7E9F1CB3960A00DE59DE /* PTDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E1E1CB289B3001FC263 /* PTDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,10 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842D7E9B1CB395C800DE59DE /* ParallaxCell.swift in Sources */,
 				84204E301CB28B5B001FC263 /* DemoDetailViewController.swift in Sources */,
+				842D7E9E1CB3960200DE59DE /* MovingViews.swift in Sources */,
 				84204E121CB2869E001FC263 /* PreviewTransitionDemoTests.swift in Sources */,
+				842D7E9F1CB3960A00DE59DE /* PTDetailViewController.swift in Sources */,
 				84204E321CB28B5B001FC263 /* DemoTableViewController.swift in Sources */,
 				8416D9EB1CB28E2600BB599D /* Extensions.swift in Sources */,
+				842D7E9C1CB395D900DE59DE /* PTTableViewController.swift in Sources */,
+				842D7E9D1CB395FC00DE59DE /* TimeExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
