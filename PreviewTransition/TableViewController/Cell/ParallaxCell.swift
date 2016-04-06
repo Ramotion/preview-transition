@@ -25,6 +25,8 @@ import UIKit
 
 public class ParallaxCell: UITableViewCell {
   
+  public var separatorView: UIView?
+  
   internal enum Direction {
     case Up
     case Down
@@ -84,7 +86,7 @@ extension ParallaxCell {
     foregroundView = createForegroundView(foregroundColor)
     contentView.backgroundColor = UIColor.blackColor()
     
-    createSeparator(.blackColor(), height: 2.0)
+    separatorView = createSeparator(.blackColor(), height: 2.0)
   }
 }
 
@@ -293,9 +295,9 @@ extension ParallaxCell {
   }
   
   // return bottom constraint
-  private func createSeparator(color: UIColor, height: CGFloat) {
+  private func createSeparator(color: UIColor, height: CGFloat) -> UIView {
     let separator = UIView(frame: CGRect.zero)
-    separator.backgroundColor = .blackColor()
+    separator.backgroundColor = color
     separator.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(separator)
     
@@ -321,5 +323,6 @@ extension ParallaxCell {
                     multiplier: 1,
                     constant: height)
     )
+    return separator
   }
 }

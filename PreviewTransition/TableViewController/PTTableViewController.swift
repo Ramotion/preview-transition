@@ -47,7 +47,7 @@ public extension PTTableViewController {
     self.currentTextLabel = createTitleLable(currentCell)
     currentTextLabel?.move(duration, direction: .Up, completion: nil)
     
-    currentSeparatorView = createSeparator(.blackColor(), height: 2, cell: currentCell)
+    currentSeparatorView = createSeparator(currentCell.separatorView?.backgroundColor, height: 2, cell: currentCell)
     currentSeparatorView?.move(duration, direction: .Down, distance: tableView.bounds.size.height)
     
     currentCell.openCell(tableView, duration: duration)
@@ -109,11 +109,13 @@ extension PTTableViewController {
     return label
   }
   
-  private func createSeparator(color: UIColor, height: CGFloat, cell: UITableViewCell) -> MovingView {
+  private func createSeparator(color: UIColor?, height: CGFloat, cell: UITableViewCell) -> MovingView {
     
     let yPosition = cell.frame.origin.y + cell.frame.size.height - tableView.contentOffset.y
     let separator = MovingView(frame: CGRect(x:0.0, y: yPosition, width: tableView.bounds.size.width, height: height))
-    separator.backgroundColor = color
+    if let color = color {
+      separator.backgroundColor = color
+    }
     separator.translatesAutoresizingMaskIntoConstraints = false
     navigationController?.view.addSubview(separator)
     return separator
