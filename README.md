@@ -1,4 +1,5 @@
 # Preview-transision
+[![Travis](https://img.shields.io/travis/Ramotion/navigation-stack.svg)](https://travis-ci.org/Ramotion/preview-transision.svg?branch=master)
 
 ## Requirements
 
