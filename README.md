@@ -1,8 +1,13 @@
 # Preview-transision
+[![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
+[![Travis](https://img.shields.io/travis/Ramotion/navigation-stack.svg)](https://travis-ci.org/Ramotion/preview-transision.svg?branch=master)
+[![CocoaPods](https://img.shields.io/cocoapods/p/PreviewTransition.svg)](https://cocoapods.org/pods/PreviewTransition)
+[![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
+[![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transision)
 
 ## Requirements
 
-- iOS 9.0+
+- iOS 8.0+
 - Xcode 7.3
 
 ## Licence
@@ -94,7 +99,7 @@ public override func tableView(tableView: UITableView, didSelectRowAtIndexPath i
 11) Configure UINavigationBar
 
 ```swift
-if let font = UIFont(name: "Avenir-medium" , size: 18) {
+if let font = UIFont(name: <Font name> , size: 18) {
       UINavigationBar.appearance().titleTextAttributes = [
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : font
