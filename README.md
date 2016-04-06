@@ -99,7 +99,7 @@ public override func tableView(tableView: UITableView, didSelectRowAtIndexPath i
 11) Configure UINavigationBar
 
 ```swift
-if let font = UIFont(name: "Avenir-medium" , size: 18) {
+if let font = UIFont(name: <Font name> , size: 18) {
       UINavigationBar.appearance().titleTextAttributes = [
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : font
