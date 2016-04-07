@@ -27,8 +27,6 @@ public class PTTableViewController: UITableViewController {
   
   internal var currentCell: ParallaxCell?
   
-  internal var currentSeparatorView: MovingView? // separator witch move up to navigation bar
-  
   private var duration: Double = 0.65
   private var currentTextLabel: MovingLabel?
 }
@@ -44,11 +42,17 @@ public extension PTTableViewController {
       fatalError("current cell is empty or add navigationController")
     }
     
+    if let currentIndex = tableView.indexPathForCell(currentCell) {
+      let nextIndex = NSIndexPath(forRow: currentIndex.row + 1, inSection: currentIndex.section)
+      if case let nextCell as ParallaxCell = tableView.cellForRowAtIndexPath(nextIndex) {
+        nextCell.showTopSeparator()
+        nextCell.superview?.bringSubviewToFront(nextCell)
+      }
+    }
+    
+    
     self.currentTextLabel = createTitleLable(currentCell)
     currentTextLabel?.move(duration, direction: .Up, completion: nil)
-    
-    currentSeparatorView = createSeparator(currentCell.separatorView?.backgroundColor, height: 2, cell: currentCell)
-    currentSeparatorView?.move(duration, direction: .Down, distance: tableView.bounds.size.height)
     
     currentCell.openCell(tableView, duration: duration)
     moveCells(tableView, currentCell: currentCell, duration: duration)
@@ -83,7 +87,6 @@ extension PTTableViewController {
     }
     closeCurrentCellIfNeed(duration)
     moveDownCurrentLabelIfNeed()
-    moveSeparatorIfNeed()
   }
 }
 
@@ -190,22 +193,8 @@ extension PTTableViewController {
     }
   }
   
-  private func moveSeparatorIfNeed() {
-    
-    guard let currentSeparatorView = self.currentSeparatorView else {
-      return
-    }
-    currentSeparatorView.move(duration + 0.01, direction: .Up, distance: 0) { (finished) in
-      dispatch_async(dispatch_get_main_queue(), { 
-        currentSeparatorView.removeFromSuperview()
-        self.currentSeparatorView = nil
-      })
-    }
-  }
-  
 //  animtaions
   private func moveCells(tableView: UITableView, currentCell: ParallaxCell, duration: Double) {
-    
     guard let currentIndex = tableView.indexPathForCell(currentCell) else {
       return
     }

@@ -27,6 +27,8 @@ public class ParallaxCell: UITableViewCell {
   
   public var separatorView: UIView?
   
+  internal var topSeparator: UIView? // only for animation
+  
   internal enum Direction {
     case Up
     case Down
@@ -70,7 +72,7 @@ extension ParallaxCell {
   
   internal func commonInit() {
     
-    contentView.layer.masksToBounds = true
+    layer.masksToBounds = false
     selectionStyle = .None
     
     // create background image view
@@ -78,15 +80,22 @@ extension ParallaxCell {
     bgImageY = addConstraintsOnView(backgroundImageView)
     bgImage = backgroundImageView
     
+    foregroundView = createForegroundView(foregroundColor)
+    contentView.backgroundColor = UIColor.blackColor()
+    
     // create title label
     let titleLabel = createTitleLable()
     parallaxTitleY = addConstraintsOnView(titleLabel)
     parallaxTitle = titleLabel
     
-    foregroundView = createForegroundView(foregroundColor)
-    contentView.backgroundColor = UIColor.blackColor()
-    
-    separatorView = createSeparator(.blackColor(), height: 2.0)
+    separatorView = createSeparator(.blackColor(), height: 2.0, verticalAttribure: .Bottom, verticalConstant: 0.0)
+  }
+  
+  public override func prepareForReuse() {
+    if topSeparator?.superview != nil {
+      topSeparator?.removeFromSuperview()
+      topSeparator = nil
+    }
   }
 }
 
@@ -176,6 +185,11 @@ internal extension ParallaxCell {
       self.center.y = self.center.y + dy
     }, completion: nil)
   }
+  
+  internal func showTopSeparator() {
+    topSeparator = createSeparator(.blackColor(), height: 2, verticalAttribure: .Top, verticalConstant: -2)
+  }
+
 }
 
 // MARK: animation
@@ -203,12 +217,35 @@ extension ParallaxCell {
   
   private func createBckgroundImage() -> UIImageView {
     
+    let container = createImageContainer()
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .Center
-    contentView.addSubview(imageView)
+    container.addSubview(imageView)
     return imageView
   }
+  
+  private func createImageContainer() -> UIView {
+    let view = UIView(frame: CGRect.zero)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.layer.masksToBounds = true
+    contentView.addSubview(view)
+    
+    // added constraints
+    for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
+      let constraint = NSLayoutConstraint(item: view,
+                                     attribute: attribute,
+                                     relatedBy: .Equal,
+                                        toItem: contentView,
+                                     attribute: attribute,
+                                    multiplier: 1,
+                                      constant: 0)
+      contentView.addConstraint(constraint)
+    }
+    
+    return view
+  }
+
   
   private func createTitleLable() -> UILabel {
     
@@ -295,20 +332,21 @@ extension ParallaxCell {
   }
   
   // return bottom constraint
-  private func createSeparator(color: UIColor, height: CGFloat) -> UIView {
+  private func createSeparator(color: UIColor, height: CGFloat, verticalAttribure: NSLayoutAttribute, verticalConstant: Double) -> UIView {
     let separator = UIView(frame: CGRect.zero)
     separator.backgroundColor = color
     separator.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(separator)
     
-    for attribute in [NSLayoutAttribute.Bottom, NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing] {
+    for attribute in [verticalAttribure, NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing] {
+      let constant = attribute == verticalAttribure ? verticalConstant : 0
       let constraint = NSLayoutConstraint(item: separator,
         attribute: attribute,
         relatedBy: .Equal,
         toItem: contentView,
         attribute: attribute,
         multiplier: 1,
-        constant: 0)
+        constant: CGFloat(constant))
      
       contentView.addConstraint(constraint)
     }
