@@ -53,34 +53,14 @@ extension AppDelegate {
         NSFontAttributeName : font
       ]
     }
-    
-    guard let navigationController = window?.rootViewController as? UINavigationController else {
-      return
-    }
-    let gradient = getGradientView(CGRect(x: 0,
-      y: 0,
-      width: UIScreen.mainScreen().bounds.size.width,
-      height: navigationController.navigationBar.bounds.size.height))
-    navigationController.navigationBar.addSubview(gradient)
   }
-  
-  private func getGradientView(frame: CGRect) -> UIView {
-    let gradientView: UIView = UIView(frame: frame)
-    let gradient: CAGradientLayer = CAGradientLayer()
-    gradient.frame = gradientView.bounds
-    gradient.colors = [UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.2).CGColor,
-                       UIColor.clearColor().CGColor]
-    gradientView.layer.insertSublayer(gradient, atIndex: 0)
-    return gradientView
-  }
-  
   
   private func configureStatusBar() {
     guard  let statusBar = UIApplication.sharedApplication().valueForKey("statusBarWindow")?.valueForKey("statusBar") as? UIView else {
       return
     }
-    
-    statusBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.2)
+
+    statusBar.backgroundColor = .clearColor()
     UIApplication.sharedApplication().statusBarStyle = .LightContent
   }
 }

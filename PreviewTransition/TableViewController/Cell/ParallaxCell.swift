@@ -27,7 +27,7 @@ public class ParallaxCell: UITableViewCell {
   
   public var separatorView: UIView?
   
-  internal var topSeparator: UIView? // only for animation
+  var topSeparator: UIView? // only for animation
   
   internal enum Direction {
     case Up
@@ -35,14 +35,13 @@ public class ParallaxCell: UITableViewCell {
   }
   
   internal var bgImageY: NSLayoutConstraint?
-  internal var bgImageHeight: NSLayoutConstraint?
   
-  internal var parallaxTitleY: NSLayoutConstraint?
+  var parallaxTitleY: NSLayoutConstraint?
   
   @IBInspectable public var difference: CGFloat = 100 // image parallax
   
-  internal var bgImage: UIImageView?
-  internal var parallaxTitle: UILabel?
+  var bgImage: UIImageView?
+  var parallaxTitle: UILabel?
   
   @IBInspectable public var foregroundColor = UIColor.blackColor()
   @IBInspectable public var foregroundAlpha: CGFloat = 0.5
@@ -77,7 +76,18 @@ extension ParallaxCell {
     
     // create background image view
     let backgroundImageView = createBckgroundImage()
-    bgImageY = addConstraintsOnView(backgroundImageView)
+    
+    // add constraints 
+    if let bgSuperView = backgroundImageView.superview {
+      for attribute: NSLayoutAttribute in [.Leading, .Trailing] {
+        (bgSuperView, backgroundImageView) >>>- { $0.attribute = attribute }
+      }
+      bgImageY = (bgSuperView, backgroundImageView) >>>- { $0.attribute = .CenterY }
+      backgroundImageView >>>- {
+        $0.attribute = .Height
+        $0.constant = bounds.height + difference
+      }
+    }
     bgImage = backgroundImageView
     
     foregroundView = createForegroundView(foregroundColor)
@@ -85,7 +95,14 @@ extension ParallaxCell {
     
     // create title label
     let titleLabel = createTitleLable()
-    parallaxTitleY = addConstraintsOnView(titleLabel)
+    for attribute: NSLayoutAttribute in [.Left, .Right] {
+        (contentView, titleLabel) >>>- { $0.attribute = attribute }
+      }
+      parallaxTitleY = (contentView, titleLabel) >>>- { $0.attribute = .CenterY }
+      titleLabel >>>- {
+        $0.attribute = .Height
+        $0.constant = bounds.height + difference
+      }
     parallaxTitle = titleLabel
     
     separatorView = createSeparator(.blackColor(), height: 2.0, verticalAttribure: .Bottom, verticalConstant: 0.0)
@@ -146,7 +163,7 @@ internal extension ParallaxCell {
     // animation
     moveToCenter(duration , offset: offsetY)
     parallaxTitle?.hidden = true
-    foregroundHidden(true, duration: duration / 2.0)
+    foregroundHidden(true, duration: duration)
   }
   
   internal func closeCell(duration: Double, tableView: UITableView, completion: () -> Void) {
@@ -186,7 +203,7 @@ internal extension ParallaxCell {
     }, completion: nil)
   }
   
-  internal func showTopSeparator() {
+  func showTopSeparator() {
     topSeparator = createSeparator(.blackColor(), height: 2, verticalAttribure: .Top, verticalConstant: -2)
   }
 
@@ -205,9 +222,37 @@ extension ParallaxCell {
   }
   
   private func foregroundHidden(hidden: Bool, duration: Double) {
-    UIView.animateWithDuration(duration) { () -> Void in
-      self.foregroundView?.alpha = hidden ? 0 : self.foregroundAlpha
+    guard let foregroundView = self.foregroundView else {
+      return
     }
+    
+    if hidden == true {
+      let currentConstrant = contentView.constraints.filter{return $0.identifier == "Bottom" ? true : false}
+      contentView.removeConstraints(currentConstrant)
+      
+      foregroundView >>>- {
+        $0.attribute = .Height
+        $0.constant = 64
+        $0.identifier = "Height"
+      }
+    } else {
+      let currentConstrant = foregroundView.constraints.filter{return $0.identifier == "Height" ? true : false}
+      foregroundView.removeConstraints(currentConstrant)
+      
+      (contentView, foregroundView) >>>- {
+        $0.attribute = .Bottom
+        $0.identifier = "Bottom"
+      }
+    }
+    
+    UIView.animateWithDuration(duration,
+                               delay: 0,
+                               usingSpringWithDamping: damping,
+                               initialSpringVelocity: 0,
+                               options: .CurveEaseInOut,
+                               animations: { () -> Void in
+      self.layoutIfNeeded()
+    }, completion: nil)
   }
 }
 
@@ -232,15 +277,8 @@ extension ParallaxCell {
     contentView.addSubview(view)
     
     // added constraints
-    for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
-      let constraint = NSLayoutConstraint(item: view,
-                                     attribute: attribute,
-                                     relatedBy: .Equal,
-                                        toItem: contentView,
-                                     attribute: attribute,
-                                    multiplier: 1,
-                                      constant: 0)
-      contentView.addConstraint(constraint)
+    for attribute: NSLayoutAttribute in [.Left, .Right, .Top, .Bottom] {
+      (contentView, view) >>>- { $0.attribute = attribute }
     }
     
     return view
@@ -269,39 +307,6 @@ extension ParallaxCell {
 
 extension ParallaxCell {
   
-  // return center constratins
-  private func addConstraintsOnView(aView: UIView) -> NSLayoutConstraint? {
-    
-    var centerConstraint: NSLayoutConstraint?
-    var constraints = [NSLayoutConstraint]()
-    for attribute in [NSLayoutAttribute.CenterY, NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing] {
-      let constraint = NSLayoutConstraint(item: aView,
-        attribute: attribute,
-        relatedBy: .Equal,
-        toItem: aView.superview,
-        attribute: attribute,
-        multiplier: 1,
-        constant: 0)
-      constraints.append(constraint)
-      
-      if attribute == .CenterY {
-        centerConstraint = constraint
-      }
-    }
-    aView.superview?.addConstraints(constraints)
-    
-    let height = NSLayoutConstraint(item: aView,
-                               attribute: .Height,
-                               relatedBy: .Equal,
-                                  toItem: nil,
-                               attribute: .Height,
-                              multiplier: 1,
-                                constant: bounds.height + difference)
-    aView.addConstraint(height)
-    bgImageHeight = height
-    return centerConstraint
-  }
-  
   private func createForegroundView(color: UIColor) -> UIView {
     guard let bgImage = self.bgImage else {
       fatalError("set bgImage")
@@ -315,52 +320,37 @@ extension ParallaxCell {
     contentView.insertSubview(foregroundView, aboveSubview: bgImage)
     
     // add constraints 
-    var constraints = [NSLayoutConstraint]()
-    for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
-      let constraint = NSLayoutConstraint(item: foregroundView,
-                                     attribute: attribute,
-                                     relatedBy: .Equal,
-                                        toItem: contentView,
-                                     attribute: attribute,
-                                    multiplier: 1,
-                                      constant: 0)
-      constraints.append(constraint)
+    for attribute: NSLayoutAttribute in [.Left, .Right, .Top] {
+      (contentView, foregroundView) >>>- { $0.attribute = attribute }
     }
-    contentView.addConstraints(constraints)
+    (contentView, foregroundView) >>>- {
+      $0.attribute = .Bottom
+      $0.identifier = "Bottom"
+    }
     
     return foregroundView
   }
   
   // return bottom constraint
-  private func createSeparator(color: UIColor, height: CGFloat, verticalAttribure: NSLayoutAttribute, verticalConstant: Double) -> UIView {
+  private func createSeparator(color: UIColor, height: CGFloat, verticalAttribure: NSLayoutAttribute, verticalConstant: CGFloat) -> UIView {
     let separator = UIView(frame: CGRect.zero)
     separator.backgroundColor = color
     separator.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(separator)
     
-    for attribute in [verticalAttribure, NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing] {
-      let constant = attribute == verticalAttribure ? verticalConstant : 0
-      let constraint = NSLayoutConstraint(item: separator,
-        attribute: attribute,
-        relatedBy: .Equal,
-        toItem: contentView,
-        attribute: attribute,
-        multiplier: 1,
-        constant: CGFloat(constant))
-     
-      contentView.addConstraint(constraint)
+    for attribute: NSLayoutAttribute in [.Leading, .Trailing] {
+      (contentView, separator) >>>- { $0.attribute = attribute }
     }
     
-    // height constraint 
-    separator.addConstraint(
-      NSLayoutConstraint(item: separator,
-                    attribute: .Height,
-                    relatedBy: .Equal,
-                    toItem: nil,
-                    attribute: .Height,
-                    multiplier: 1,
-                    constant: height)
-    )
+    (contentView, separator) >>>- {
+      $0.attribute = verticalAttribure
+      $0.constant = verticalConstant
+    }
+    // height constraint
+    separator >>>- {
+      $0.attribute = .Height
+      $0.constant = height
+    }
     return separator
   }
 }

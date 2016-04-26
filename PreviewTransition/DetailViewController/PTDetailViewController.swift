@@ -51,6 +51,13 @@ extension  PTDetailViewController {
         label.hidden = true
       }
     }
+    
+    createNavBar(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
+  }
+  
+  public override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
   }
 }
 
@@ -101,4 +108,22 @@ extension PTDetailViewController {
     
     return imageView
   }
+  
+  private func createNavBar(color: UIColor) -> UIView {
+    let navBar = UIView(frame: CGRect.zero)
+    navBar.backgroundColor = color
+    navBar.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(navBar)
+    
+    for attributes: NSLayoutAttribute in [.Left, .Right, .Top] {
+      (view, navBar) >>>- { $0.attribute = attributes }
+    }
+    navBar >>>- {
+      $0.attribute = .Height
+      $0.constant = 64
+    }
+    
+    return navBar
+  }
+
 }

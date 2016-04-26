@@ -28,6 +28,8 @@
 		842D7E9D1CB395FC00DE59DE /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E241CB289DC001FC263 /* TimeExtensions.swift */; };
 		842D7E9E1CB3960200DE59DE /* MovingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E261CB289DC001FC263 /* MovingViews.swift */; };
 		842D7E9F1CB3960A00DE59DE /* PTDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E1E1CB289B3001FC263 /* PTDetailViewController.swift */; };
+		848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
+		848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 		84204E271CB289DC001FC263 /* PTTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTTableViewController.swift; sourceTree = "<group>"; };
 		84204E2D1CB28B5B001FC263 /* DemoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoDetailViewController.swift; sourceTree = "<group>"; };
 		84204E2E1CB28B5B001FC263 /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
+		848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHalper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 		84204E201CB289C6001FC263 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				848BD7E31CCF54300046DC13 /* Halpers */,
 				84204E211CB289DC001FC263 /* Cell */,
 				84204E231CB289DC001FC263 /* Extensions */,
 				84204E251CB289DC001FC263 /* MovingLabel */,
@@ -189,6 +193,14 @@
 			);
 			name = ViewControllers;
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		848BD7E31CCF54300046DC13 /* Halpers */ = {
+			isa = PBXGroup;
+			children = (
+				848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */,
+			);
+			path = Halpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +310,7 @@
 				84204E281CB289DC001FC263 /* ParallaxCell.swift in Sources */,
 				84204E291CB289DC001FC263 /* TimeExtensions.swift in Sources */,
 				84204E311CB28B5B001FC263 /* DemoTableViewController.swift in Sources */,
+				848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				84204E2B1CB289DC001FC263 /* PTTableViewController.swift in Sources */,
 				84204DFD1CB2869E001FC263 /* AppDelegate.swift in Sources */,
 				84204E2F1CB28B5B001FC263 /* DemoDetailViewController.swift in Sources */,
@@ -314,6 +327,7 @@
 				84204E121CB2869E001FC263 /* PreviewTransitionDemoTests.swift in Sources */,
 				842D7E9F1CB3960A00DE59DE /* PTDetailViewController.swift in Sources */,
 				84204E321CB28B5B001FC263 /* DemoTableViewController.swift in Sources */,
+				848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				8416D9EB1CB28E2600BB599D /* Extensions.swift in Sources */,
 				842D7E9C1CB395D900DE59DE /* PTTableViewController.swift in Sources */,
 				842D7E9D1CB395FC00DE59DE /* TimeExtensions.swift in Sources */,
