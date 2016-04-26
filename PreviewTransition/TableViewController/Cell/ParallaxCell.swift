@@ -29,12 +29,12 @@ public class ParallaxCell: UITableViewCell {
   
   var topSeparator: UIView? // only for animation
   
-  internal enum Direction {
+  enum Direction {
     case Up
     case Down
   }
   
-  internal var bgImageY: NSLayoutConstraint?
+  var bgImageY: NSLayoutConstraint?
   
   var parallaxTitleY: NSLayoutConstraint?
   
@@ -46,8 +46,8 @@ public class ParallaxCell: UITableViewCell {
   @IBInspectable public var foregroundColor = UIColor.blackColor()
   @IBInspectable public var foregroundAlpha: CGFloat = 0.5
   
-  internal var foregroundView: UIView?
-  internal var isMovedHidden: Bool = false
+  var foregroundView: UIView?
+  var isMovedHidden: Bool = false
   
   private var closedBgImageYConstant: CGFloat = 0
   private var closedYPosition: CGFloat = 0
@@ -69,7 +69,7 @@ public class ParallaxCell: UITableViewCell {
 
 extension ParallaxCell {
   
-  internal func commonInit() {
+  func commonInit() {
     
     layer.masksToBounds = false
     selectionStyle = .None
@@ -128,9 +128,9 @@ public extension ParallaxCell {
 
 // MARK: internal
 
-internal extension ParallaxCell {
+extension ParallaxCell {
   
-  internal func parallaxOffset(tableView: UITableView) {
+  func parallaxOffset(tableView: UITableView) {
     
     guard let bgImageY = self.bgImageY where isMovedHidden == false else {
       return
@@ -145,7 +145,7 @@ internal extension ParallaxCell {
     bgImageY.constant = move
   }
   
-  internal func openCell(tableView: UITableView, duration: Double) {
+  func openCell(tableView: UITableView, duration: Double) {
     guard let superview = self.superview,
           let bgImageY = self.bgImageY else {
       return
@@ -166,7 +166,7 @@ internal extension ParallaxCell {
     foregroundHidden(true, duration: duration)
   }
   
-  internal func closeCell(duration: Double, tableView: UITableView, completion: () -> Void) {
+  func closeCell(duration: Double, tableView: UITableView, completion: () -> Void) {
     bgImageY?.constant = closedBgImageYConstant
     UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: { () -> Void in
       self.layoutIfNeeded()
@@ -180,7 +180,7 @@ internal extension ParallaxCell {
     foregroundHidden(false, duration: duration / 2.0)
   }
 
-  internal func animationMoveCell(direction: Direction, duration: Double, tableView: UITableView, selectedIndexPaht: NSIndexPath, close: Bool) {
+  func animationMoveCell(direction: Direction, duration: Double, tableView: UITableView, selectedIndexPaht: NSIndexPath, close: Bool) {
     
     let selfYPosition = close == false ? frame.origin.y : closedYPosition
     let selectedCellFrame = tableView.rectForRowAtIndexPath(selectedIndexPaht)
@@ -206,7 +206,6 @@ internal extension ParallaxCell {
   func showTopSeparator() {
     topSeparator = createSeparator(.blackColor(), height: 2, verticalAttribure: .Top, verticalConstant: -2)
   }
-
 }
 
 // MARK: animation
