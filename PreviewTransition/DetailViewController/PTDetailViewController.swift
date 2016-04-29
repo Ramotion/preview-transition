@@ -99,7 +99,7 @@ extension PTDetailViewController {
     imageView.image = image
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .Center
-    view.addSubview(imageView)
+    view.insertSubview(imageView, atIndex: 0)
     
     // added constraints
     for attribute in [NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {

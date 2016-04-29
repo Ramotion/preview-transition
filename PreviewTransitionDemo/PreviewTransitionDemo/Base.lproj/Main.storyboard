@@ -50,7 +50,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bep-Nt-aTe" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="525" width="600" height="75"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCZ-Vf-asX" userLabel="Blur">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999998" contentMode="center" id="C9n-E4-lWM">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cNu-DQ-KVS">
+                                        <rect key="frame" x="26" y="24" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="Oez-4a-Ajf"/>
+                                            <constraint firstAttribute="height" constant="28" id="dVU-d2-hQD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOWNLOAD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of2-Mb-6dK">
+                                        <rect key="frame" x="72" y="27" width="99" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qf5-7H-m8I">
+                                        <rect key="frame" x="545" y="23" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="7vC-Kj-Xhh"/>
+                                            <constraint firstAttribute="height" constant="29" id="y9j-Rr-ADZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShareIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Bm-C3g">
+                                        <rect key="frame" x="485" y="23" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="AdG-0M-DE8"/>
+                                            <constraint firstAttribute="height" constant="29" id="npa-OF-Phw"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2418571412563324" green="0.17698898911476135" blue="0.1230514720082283" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qCZ-Vf-asX" firstAttribute="top" secondItem="bep-Nt-aTe" secondAttribute="top" id="69l-fu-BUK"/>
+                                    <constraint firstItem="qf5-7H-m8I" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="7Sl-Yf-TPT"/>
+                                    <constraint firstItem="qf5-7H-m8I" firstAttribute="leading" secondItem="fYq-Bm-C3g" secondAttribute="trailing" constant="31" id="CbF-3f-1Rz"/>
+                                    <constraint firstItem="qCZ-Vf-asX" firstAttribute="leading" secondItem="bep-Nt-aTe" secondAttribute="leading" id="FMe-SG-HXT"/>
+                                    <constraint firstItem="fYq-Bm-C3g" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="Q7R-nz-kDO"/>
+                                    <constraint firstItem="cNu-DQ-KVS" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="VSr-aL-49x"/>
+                                    <constraint firstAttribute="trailing" secondItem="qf5-7H-m8I" secondAttribute="trailing" constant="26" id="dyM-CD-2Xy"/>
+                                    <constraint firstAttribute="trailing" secondItem="qCZ-Vf-asX" secondAttribute="trailing" id="lh9-ig-Qfw"/>
+                                    <constraint firstItem="of2-Mb-6dK" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="ndt-gV-UNC"/>
+                                    <constraint firstItem="cNu-DQ-KVS" firstAttribute="leading" secondItem="bep-Nt-aTe" secondAttribute="leading" constant="26" id="sM2-by-tp2"/>
+                                    <constraint firstItem="of2-Mb-6dK" firstAttribute="leading" secondItem="cNu-DQ-KVS" secondAttribute="trailing" constant="18" id="u48-EN-PaD"/>
+                                    <constraint firstAttribute="bottom" secondItem="qCZ-Vf-asX" secondAttribute="bottom" id="w7Z-WS-2Ns"/>
+                                    <constraint firstAttribute="height" constant="75" id="y5q-xC-6PW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bep-Nt-aTe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HoE-lK-c1w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bep-Nt-aTe" secondAttribute="bottom" id="Ye7-fc-GvE"/>
+                            <constraint firstAttribute="trailing" secondItem="bep-Nt-aTe" secondAttribute="trailing" id="fVz-GY-Jz2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,4 +142,9 @@
             <point key="canvasLocation" x="88" y="484"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HertIcon" width="31" height="29"/>
+        <image name="PlusIcon" width="30" height="30"/>
+        <image name="ShareIcon" width="31" height="30"/>
+    </resources>
 </document>
