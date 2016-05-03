@@ -246,7 +246,7 @@ extension ParallaxCell {
     
     UIView.animateWithDuration(duration,
                                delay: 0,
-                               usingSpringWithDamping: damping,
+                               usingSpringWithDamping: damping * 2.0,
                                initialSpringVelocity: 0,
                                options: .CurveEaseInOut,
                                animations: { () -> Void in
