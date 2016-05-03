@@ -54,16 +54,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bep-Nt-aTe" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="525" width="600" height="75"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCZ-Vf-asX" userLabel="Blur">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999998" contentMode="center" id="C9n-E4-lWM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <blurEffect style="dark"/>
-                                    </visualEffectView>
                                     <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cNu-DQ-KVS">
                                         <rect key="frame" x="26" y="24" width="28" height="28"/>
                                         <constraints>
@@ -94,18 +84,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.2418571412563324" green="0.17698898911476135" blue="0.1230514720082283" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="qCZ-Vf-asX" firstAttribute="top" secondItem="bep-Nt-aTe" secondAttribute="top" id="69l-fu-BUK"/>
                                     <constraint firstItem="qf5-7H-m8I" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="7Sl-Yf-TPT"/>
                                     <constraint firstItem="qf5-7H-m8I" firstAttribute="leading" secondItem="fYq-Bm-C3g" secondAttribute="trailing" constant="31" id="CbF-3f-1Rz"/>
-                                    <constraint firstItem="qCZ-Vf-asX" firstAttribute="leading" secondItem="bep-Nt-aTe" secondAttribute="leading" id="FMe-SG-HXT"/>
                                     <constraint firstItem="fYq-Bm-C3g" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="Q7R-nz-kDO"/>
                                     <constraint firstItem="cNu-DQ-KVS" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="VSr-aL-49x"/>
                                     <constraint firstAttribute="trailing" secondItem="qf5-7H-m8I" secondAttribute="trailing" constant="26" id="dyM-CD-2Xy"/>
-                                    <constraint firstAttribute="trailing" secondItem="qCZ-Vf-asX" secondAttribute="trailing" id="lh9-ig-Qfw"/>
                                     <constraint firstItem="of2-Mb-6dK" firstAttribute="centerY" secondItem="bep-Nt-aTe" secondAttribute="centerY" id="ndt-gV-UNC"/>
                                     <constraint firstItem="cNu-DQ-KVS" firstAttribute="leading" secondItem="bep-Nt-aTe" secondAttribute="leading" constant="26" id="sM2-by-tp2"/>
                                     <constraint firstItem="of2-Mb-6dK" firstAttribute="leading" secondItem="cNu-DQ-KVS" secondAttribute="trailing" constant="18" id="u48-EN-PaD"/>
-                                    <constraint firstAttribute="bottom" secondItem="qCZ-Vf-asX" secondAttribute="bottom" id="w7Z-WS-2Ns"/>
                                     <constraint firstAttribute="height" constant="75" id="y5q-xC-6PW"/>
                                 </constraints>
                             </view>
@@ -122,6 +108,7 @@
                         <outlet property="controlHeightConstraint" destination="y5q-xC-6PW" id="bj2-EN-9sN"/>
                         <outlet property="controlTextLabel" destination="of2-Mb-6dK" id="8VW-Qx-njJ"/>
                         <outlet property="controlTextLableLending" destination="u48-EN-PaD" id="THf-Gf-6Oe"/>
+                        <outlet property="controlView" destination="bep-Nt-aTe" id="lB6-d4-1rx"/>
                         <outlet property="hertIconView" destination="qf5-7H-m8I" id="LUd-B6-aY7"/>
                         <outlet property="plusImageView" destination="cNu-DQ-KVS" id="xQY-UZ-Bve"/>
                         <outlet property="shareImageView" destination="fYq-Bm-C3g" id="mW0-7l-wPb"/>

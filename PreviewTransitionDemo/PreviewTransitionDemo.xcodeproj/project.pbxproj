@@ -34,6 +34,8 @@
 		848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 		84A36E0E1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */; };
 		84A36E0F1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */; };
+		84A36E141CD8C70F00AEC2F2 /* ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E131CD8C70F00AEC2F2 /* ScreenShot.swift */; };
+		84A36E151CD8C70F00AEC2F2 /* ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E131CD8C70F00AEC2F2 /* ScreenShot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		848526511CD39CFB0052BEAD /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHalper.swift; sourceTree = "<group>"; };
 		84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerAnimationHalper.swift; sourceTree = "<group>"; };
+		84A36E131CD8C70F00AEC2F2 /* ScreenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenShot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +101,7 @@
 		84204DF01CB2869E001FC263 = {
 			isa = PBXGroup;
 			children = (
-				84A36E0C1CD88EB200AEC2F2 /* AnimationHalpers */,
+				84A36E111CD8C31C00AEC2F2 /* Halpers */,
 				848526501CD39CDD0052BEAD /* Constants */,
 				84204E1C1CB286DD001FC263 /* PreviewTransition */,
 				84204DFB1CB2869E001FC263 /* PreviewTransitionDemo */,
@@ -227,6 +230,24 @@
 			path = AnimationHalpers;
 			sourceTree = "<group>";
 		};
+		84A36E111CD8C31C00AEC2F2 /* Halpers */ = {
+			isa = PBXGroup;
+			children = (
+				84A36E121CD8C32600AEC2F2 /* ScreenShot */,
+				84A36E0C1CD88EB200AEC2F2 /* AnimationHalpers */,
+			);
+			name = Halpers;
+			sourceTree = "<group>";
+		};
+		84A36E121CD8C32600AEC2F2 /* ScreenShot */ = {
+			isa = PBXGroup;
+			children = (
+				84A36E131CD8C70F00AEC2F2 /* ScreenShot.swift */,
+			);
+			name = ScreenShot;
+			path = ScreenShort;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +373,7 @@
 				848526521CD39CFB0052BEAD /* Images.swift in Sources */,
 				84204E281CB289DC001FC263 /* ParallaxCell.swift in Sources */,
 				84204E291CB289DC001FC263 /* TimeExtensions.swift in Sources */,
+				84A36E141CD8C70F00AEC2F2 /* ScreenShot.swift in Sources */,
 				84204E311CB28B5B001FC263 /* DemoTableViewController.swift in Sources */,
 				848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				84204E2B1CB289DC001FC263 /* PTTableViewController.swift in Sources */,
@@ -371,6 +393,7 @@
 				848526531CD39CFB0052BEAD /* Images.swift in Sources */,
 				84204E121CB2869E001FC263 /* PreviewTransitionDemoTests.swift in Sources */,
 				842D7E9F1CB3960A00DE59DE /* PTDetailViewController.swift in Sources */,
+				84A36E151CD8C70F00AEC2F2 /* ScreenShot.swift in Sources */,
 				84204E321CB28B5B001FC263 /* DemoTableViewController.swift in Sources */,
 				848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				8416D9EB1CB28E2600BB599D /* Extensions.swift in Sources */,

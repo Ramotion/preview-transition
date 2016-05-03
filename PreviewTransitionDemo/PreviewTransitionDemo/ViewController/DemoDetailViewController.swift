@@ -31,6 +31,7 @@ public class DemoDetailViewController: PTDetailViewController {
   
   // control icons
   
+  @IBOutlet weak var controlView: UIView!
   @IBOutlet weak var plusImageView: UIImageView!
   @IBOutlet weak var controlTextLabel: UILabel!
   @IBOutlet weak var controlTextLableLending: NSLayoutConstraint!
@@ -51,8 +52,10 @@ extension DemoDetailViewController {
     createNavigationBarBackItem(backButton)
     
     // animations
-    showBackButtonDuration(0.2)
-    showControlViewDuration(0.2)
+    showBackButtonDuration(0.3)
+    showControlViewDuration(0.3)
+    
+    createBlurView()
   }
 }
 
@@ -76,7 +79,64 @@ extension DemoDetailViewController {
     navigationItem.leftBarButtonItem = buttonItem
     return buttonItem
   }
+  
+  private func createBlurView() -> UIView {
+    let imageFrame = CGRect(x: 0, y: view.frame.size.height - controlHeightConstraint.constant, width: view.frame.width, height: controlHeightConstraint.constant)
+    let image = view.makeScreenShotFromFrame(imageFrame)
+    let screnShotImageView = UIImageView(image: image)
+    screnShotImageView.translatesAutoresizingMaskIntoConstraints = false
+    screnShotImageView.blurViewValue(5)
+    controlView.insertSubview(screnShotImageView, atIndex: 0)
+    // added constraints
+    [NSLayoutAttribute.Left, .Right, .Bottom, .Top].forEach { attribute in
+      (self.controlView, screnShotImageView) >>>- {
+        $0.attribute = attribute
+      }
+    }
+    
+    createMaskView(screnShotImageView)
+    createLineViewOnVeiw(screnShotImageView)
+    
+    return screnShotImageView
+  }
+
+  private func createMaskView(onView: UIView) {
+    let blueView = UIView(frame: CGRect.zero)
+    blueView.backgroundColor = UIColor(red:0.26, green:0.36, blue:0.44, alpha:1.00)
+    blueView.translatesAutoresizingMaskIntoConstraints = false
+    blueView.alpha = 0.5
+    onView.addSubview(blueView)
+    
+    [NSLayoutAttribute.Left, .Right, .Bottom, .Top].forEach { attribute in
+      (onView, blueView) >>>- {
+        $0.attribute = attribute
+      }
+    }
+  }
+  
+  private func createLineViewOnVeiw(onView: UIView) {
+    let lineView = UIView(frame: CGRect.zero)
+    lineView.backgroundColor = .whiteColor()
+    lineView.translatesAutoresizingMaskIntoConstraints = false
+    lineView.alpha = 0.5
+    onView.addSubview(lineView)
+    
+    lineView >>>- {
+      $0.attribute = .Height
+      $0.constant = 1
+    }
+    
+    [NSLayoutAttribute.Left, .Right, .Top].forEach { attribute in
+      (onView, lineView) >>>- {
+        $0.attribute = attribute
+      }
+    }
+  }
+
+
 }
+
+
 
 // MARK: animations
 
@@ -128,7 +188,6 @@ extension DemoDetailViewController {
       self.view.layoutIfNeeded()
     }, completion: nil)
   }
-
 }
 
 // MARK: actions
