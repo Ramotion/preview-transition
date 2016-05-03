@@ -117,10 +117,19 @@
                             <constraint firstAttribute="trailing" secondItem="bep-Nt-aTe" secondAttribute="trailing" id="fVz-GY-Jz2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="controlBottomConstrant" destination="Ye7-fc-GvE" id="Z4z-3v-JPd"/>
+                        <outlet property="controlHeightConstraint" destination="y5q-xC-6PW" id="bj2-EN-9sN"/>
+                        <outlet property="controlTextLabel" destination="of2-Mb-6dK" id="8VW-Qx-njJ"/>
+                        <outlet property="controlTextLableLending" destination="u48-EN-PaD" id="THf-Gf-6Oe"/>
+                        <outlet property="hertIconView" destination="qf5-7H-m8I" id="LUd-B6-aY7"/>
+                        <outlet property="plusImageView" destination="cNu-DQ-KVS" id="xQY-UZ-Bve"/>
+                        <outlet property="shareImageView" destination="fYq-Bm-C3g" id="mW0-7l-wPb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="484"/>
+            <point key="canvasLocation" x="1609" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cXS-jQ-bIr">

@@ -32,6 +32,8 @@
 		848526531CD39CFB0052BEAD /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848526511CD39CFB0052BEAD /* Images.swift */; };
 		848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 		848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
+		84A36E0E1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */; };
+		84A36E0F1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,7 @@
 		84204E2E1CB28B5B001FC263 /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		848526511CD39CFB0052BEAD /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHalper.swift; sourceTree = "<group>"; };
+		84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerAnimationHalper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 		84204DF01CB2869E001FC263 = {
 			isa = PBXGroup;
 			children = (
+				84A36E0C1CD88EB200AEC2F2 /* AnimationHalpers */,
 				848526501CD39CDD0052BEAD /* Constants */,
 				84204E1C1CB286DD001FC263 /* PreviewTransition */,
 				84204DFB1CB2869E001FC263 /* PreviewTransitionDemo */,
@@ -213,6 +217,14 @@
 				848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */,
 			);
 			path = Halpers;
+			sourceTree = "<group>";
+		};
+		84A36E0C1CD88EB200AEC2F2 /* AnimationHalpers */ = {
+			isa = PBXGroup;
+			children = (
+				84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */,
+			);
+			path = AnimationHalpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +356,7 @@
 				848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				84204E2B1CB289DC001FC263 /* PTTableViewController.swift in Sources */,
 				84204DFD1CB2869E001FC263 /* AppDelegate.swift in Sources */,
+				84A36E0E1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */,
 				84204E2F1CB28B5B001FC263 /* DemoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +375,7 @@
 				848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */,
 				8416D9EB1CB28E2600BB599D /* Extensions.swift in Sources */,
 				842D7E9C1CB395D900DE59DE /* PTTableViewController.swift in Sources */,
+				84A36E0F1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift in Sources */,
 				842D7E9D1CB395FC00DE59DE /* TimeExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

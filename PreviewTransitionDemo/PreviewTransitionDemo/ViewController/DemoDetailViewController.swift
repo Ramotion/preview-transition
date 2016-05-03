@@ -26,6 +26,17 @@ import UIKit
 
 public class DemoDetailViewController: PTDetailViewController {
   
+  @IBOutlet weak var controlHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var controlBottomConstrant: NSLayoutConstraint!
+  
+  // control icons
+  
+  @IBOutlet weak var plusImageView: UIImageView!
+  @IBOutlet weak var controlTextLabel: UILabel!
+  @IBOutlet weak var controlTextLableLending: NSLayoutConstraint!
+  @IBOutlet weak var shareImageView: UIImageView!
+  @IBOutlet weak var hertIconView: UIImageView!
+  
   var backButton: UIButton?
 }
 
@@ -37,10 +48,11 @@ extension DemoDetailViewController {
     super.viewDidLoad()
     
     backButton = createBackButton()
-    let buttonItem = UIBarButtonItem(customView: backButton!)
-    navigationItem.leftBarButtonItem = buttonItem
-    backButton?.alpha = 0
-    showBackButton()
+    createNavigationBarBackItem(backButton)
+    
+    // animations
+    showBackButtonDuration(0.2)
+    showControlViewDuration(0.2)
   }
 }
 
@@ -49,17 +61,74 @@ extension DemoDetailViewController {
 extension DemoDetailViewController {
   
   private func createBackButton() -> UIButton {
-    let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    let button = UIButton(frame: CGRect(x: 0, y: 0, width: 22, height: 44))
+    button.setImage(UIImage.Asset.Back.image, forState: .Normal)
     button.addTarget(self, action: #selector(DemoDetailViewController.backButtonHandler) , forControlEvents: .TouchUpInside)
-    button.setTitle("Back", forState: .Normal)
     return button
   }
+  
+  private func createNavigationBarBackItem(button: UIButton?) -> UIBarButtonItem? {
+    guard let button = button else {
+      return nil
+    }
+    
+    let buttonItem = UIBarButtonItem(customView: button)
+    navigationItem.leftBarButtonItem = buttonItem
+    return buttonItem
+  }
+}
 
-  private func showBackButton() {
-    UIView.animateWithDuration(0.2) { () -> Void in
-      self.backButton?.alpha = 1
+// MARK: animations
+
+extension DemoDetailViewController {
+  
+  private func showBackButtonDuration(duration: Double) {
+    backButton?.rotateDuration(duration, from: CGFloat(-M_PI_4), to: 0)
+    backButton?.scaleDuration(duration, from: 0.5, to: 1)
+    backButton?.opacityDuration(duration, from: 0, to: 1)
+  }
+  
+  private func showControlViewDuration(duration: Double) {
+    moveUpControllerDuration(duration)
+    showControlButtonsDuration(duration)
+    showControlLabelDuration(duration)
+  }
+  
+  private func moveUpControllerDuration(duration: Double) {
+    controlBottomConstrant.constant = -controlHeightConstraint.constant
+    view.layoutIfNeeded()
+    
+    controlBottomConstrant.constant = 0
+    UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseOut, animations: { 
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+  }
+
+  private func showControlButtonsDuration(duration: Double) {
+    [plusImageView, shareImageView, hertIconView].forEach {
+      $0.rotateDuration(duration, from: CGFloat(-M_PI_4), to: 0, delay: duration)
+      $0.scaleDuration(duration, from: 0.5, to: 1, delay: duration)
+      
+      $0.alpha = 0
+      $0.opacityDuration(duration, from: 0, to: 1, delay: duration, remove: false)
     }
   }
+
+  private func showControlLabelDuration(duration: Double) {
+    controlTextLabel.alpha = 0
+    controlTextLabel.opacityDuration(duration, from: 0, to: 1, delay: duration, remove: false)
+    
+    // move rigth
+    let offSet: CGFloat = 20
+    controlTextLableLending.constant -= offSet
+    view.layoutIfNeeded()
+    
+    controlTextLableLending.constant += offSet
+    UIView.animateWithDuration(duration * 2, delay: 0, options: .CurveEaseOut, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+  }
+
 }
 
 // MARK: actions
