@@ -95,48 +95,25 @@ extension DemoDetailViewController {
     }
     
     createMaskView(screnShotImageView)
-    createLineViewOnVeiw(screnShotImageView)
     
     return screnShotImageView
   }
 
   private func createMaskView(onView: UIView) {
     let blueView = UIView(frame: CGRect.zero)
-    blueView.backgroundColor = UIColor(red:0.26, green:0.36, blue:0.44, alpha:1.00)
+    blueView.backgroundColor = .blackColor()
     blueView.translatesAutoresizingMaskIntoConstraints = false
-    blueView.alpha = 0.5
+    blueView.alpha = 0.4
     onView.addSubview(blueView)
     
+    // add constraints
     [NSLayoutAttribute.Left, .Right, .Bottom, .Top].forEach { attribute in
       (onView, blueView) >>>- {
         $0.attribute = attribute
       }
     }
   }
-  
-  private func createLineViewOnVeiw(onView: UIView) {
-    let lineView = UIView(frame: CGRect.zero)
-    lineView.backgroundColor = .whiteColor()
-    lineView.translatesAutoresizingMaskIntoConstraints = false
-    lineView.alpha = 0.5
-    onView.addSubview(lineView)
-    
-    lineView >>>- {
-      $0.attribute = .Height
-      $0.constant = 1
-    }
-    
-    [NSLayoutAttribute.Left, .Right, .Top].forEach { attribute in
-      (onView, lineView) >>>- {
-        $0.attribute = attribute
-      }
-    }
-  }
-
-
 }
-
-
 
 // MARK: animations
 
