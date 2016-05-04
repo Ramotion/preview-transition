@@ -42,6 +42,7 @@ extension AppDelegate {
   
   private func configureNavigationBar() {
     
+    //transparent background
     UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
     UINavigationBar.appearance().shadowImage = UIImage()
     UINavigationBar.appearance().translucent = true

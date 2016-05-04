@@ -29,8 +29,7 @@ public class DemoDetailViewController: PTDetailViewController {
   @IBOutlet weak var controlHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var controlBottomConstrant: NSLayoutConstraint!
   
-  // control icons
-  
+  // bottom control icons
   @IBOutlet weak var controlView: UIView!
   @IBOutlet weak var plusImageView: UIImageView!
   @IBOutlet weak var controlTextLabel: UILabel!
@@ -145,7 +144,6 @@ extension DemoDetailViewController {
     [plusImageView, shareImageView, hertIconView].forEach {
       $0.rotateDuration(duration, from: CGFloat(-M_PI_4), to: 0, delay: duration)
       $0.scaleDuration(duration, from: 0.5, to: 1, delay: duration)
-      
       $0.alpha = 0
       $0.opacityDuration(duration, from: 0, to: 1, delay: duration, remove: false)
     }

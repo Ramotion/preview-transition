@@ -1,5 +1,4 @@
-# Preview-transision
-[![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
+# Preview-transision [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/navigation-stack.svg)](https://travis-ci.org/Ramotion/preview-transision.svg?branch=master)
 [![CocoaPods](https://img.shields.io/cocoapods/p/PreviewTransition.svg)](https://cocoapods.org/pods/PreviewTransition)
 [![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
@@ -38,13 +37,13 @@ public override func tableView(tableView: UITableView, cellForRowAtIndexPath ind
     return tableView.dequeueReusableCellWithIdentifier(<CellIdentifier>, forIndexPath: indexPath)
 }
 ```
- 
+
 4) add ParallaxCell
 
-strorybords: 
+strorybords:
 create cell and inheriting from ParallaxCell, don't forget set identifier <CellIdentifier>
 
-or programmatically: 
+or programmatically:
 register cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReuseIdentifier:<CellIdentifier>)```
 
 5) set cell height for example 240
@@ -69,9 +68,9 @@ public override func tableView(tableView: UITableView, willDisplayCell cell: UIT
     }
 }
 ```
-your tableViewController must be look like [DemoTableViewController](https://github.com/Ramotion/preview-transision/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift) 
+your tableViewController must be look like [DemoTableViewController](https://github.com/Ramotion/preview-transision/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift)
 
-(method ```public override func tableView(tableView: didSelectRowAtIndexPath indexPath:)``` we will add later)
+Method ```public override func tableView(tableView: didSelectRowAtIndexPath indexPath:)``` we will add later. (step 10)
 
 8) Create UIViewController inherit, inheriting from ```PTDetailViewController```
 
@@ -99,6 +98,13 @@ public override func tableView(tableView: UITableView, didSelectRowAtIndexPath i
 11) Configure UINavigationBar
 
 ```swift
+// transparent background
+UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+UINavigationBar.appearance().shadowImage = UIImage()
+UINavigationBar.appearance().translucent = true
+UINavigationBar.appearance().tintColor = .whiteColor()
+
+// set font
 if let font = UIFont(name: <Font name> , size: 18) {
       UINavigationBar.appearance().titleTextAttributes = [
         NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -113,4 +119,3 @@ See our other [open-source projects](https://github.com/ramotion) or [hire](http
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/preview-transision)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
-
