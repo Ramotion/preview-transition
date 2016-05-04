@@ -18,7 +18,7 @@ Just add the Source folder to your project.
 
 or use [CocoaPods](https://cocoapods.org) with Podfile:
 ``` ruby
-pod 'PreviewTransition', '~> 0.1.0'
+pod 'PreviewTransition', '~> 0.1.1'
 ```
 ## Usage
 
