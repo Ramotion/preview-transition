@@ -25,7 +25,7 @@ import UIKit
 
 public class DemoTableViewController: PTTableViewController {
   
-  private let items = ["1", "2", "3", "4", "5"] // image names
+  private let items = [("1", "River cruise"), ("2", "North Island"), ("3", "Mountain trail"), ("4", "Southern Coast"), ("5", "Fishing place")] // image names
 }
 
 // MARK: UITableViewDelegate
@@ -43,10 +43,11 @@ extension DemoTableViewController {
     }
     
     let index = indexPath.row % items.count
-    let imageName = items[index]
+    let imageName = items[index].0
+    let title = items[index].1
     
     if let image = UIImage(named: imageName) {
-      cell.setImage(image, title: "Ramotion")
+      cell.setImage(image, title: title)
     }
   }
   
