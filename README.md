@@ -4,6 +4,10 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
 
+<p align="center">
+<a href="https://dribbble.com/shots/2694049-iOS-Pagination-Controller-Open-Source"><img src="preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
+</p>
+
 ## Requirements
 
 - iOS 8.0+
@@ -18,7 +22,7 @@ Just add the Source folder to your project.
 
 or use [CocoaPods](https://cocoapods.org) with Podfile:
 ``` ruby
-pod 'PreviewTransition' 
+pod 'PreviewTransition'
 ```
 ## Usage
 
