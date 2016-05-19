@@ -23,9 +23,7 @@ The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_sour
 Preview-transition is released under the MIT license.
 See [LICENSE](./LICENSE) for details.
 
-Just add the Source folder to your project.
-
-or use [CocoaPods](https://cocoapods.org) with Podfile:
+Just add the Source folder to your project or use [CocoaPods](https://cocoapods.org) like this:
 ``` ruby
 pod 'PreviewTransition'
 ```
@@ -47,19 +45,21 @@ public override func tableView(tableView: UITableView, cellForRowAtIndexPath ind
 }
 ```
 
-4) add ParallaxCell
+4) add a ParallaxCell
 
 strorybords:
-create cell and inheriting from ParallaxCell, don't forget set identifier <CellIdentifier>
+create a cell and inherit from ParallaxCell; don't forget set the identifier <CellIdentifier>
 
 or programmatically:
-register cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReuseIdentifier:<CellIdentifier>)```
+register a cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReuseIdentifier:<CellIdentifier>)```
 
-5) set cell height for example 240
+5) set cell height
 
-6) create image names (image size must be equal screen size or bigger)
+6) create image names (image sizes must be equal to screen size or bigger)
 
+```swift
 let images = [image_name, image_name, image_name, image_name, image_name] // image names
+```
 
 7) set image and text for ParallaxCell
 
@@ -77,13 +77,13 @@ public override func tableView(tableView: UITableView, willDisplayCell cell: UIT
     }
 }
 ```
-your tableViewController must be look like [DemoTableViewController](https://github.com/Ramotion/preview-transition/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift)
+your tableViewController should look like [DemoTableViewController](https://github.com/Ramotion/preview-transition/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift)
 
 Method ```public override func tableView(tableView: didSelectRowAtIndexPath indexPath:)``` we will add later. (step 10)
 
-8) Create UIViewController inherit, inheriting from ```PTDetailViewController```
+8) Create UIViewController, inheriting from ```PTDetailViewController```
 
-9) Added action for backButton and call ```popViewController()```
+9) Add action for backButton and call ```popViewController()```
 
 ```swift
 func backButtonHandler() {
