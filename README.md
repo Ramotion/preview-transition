@@ -37,7 +37,7 @@ pod 'PreviewTransition'
 
 ```swift
 public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return <RowsCoutn>
+    return <RowsCount>
 }
 
 public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
