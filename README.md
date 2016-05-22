@@ -47,7 +47,7 @@ public override func tableView(tableView: UITableView, cellForRowAtIndexPath ind
 
 4) add a ParallaxCell
 
-storybords:
+storyboards:
 create a cell and inherit from ```ParallaxCell```; don't forget set the identifier ```<CellIdentifier>```
 
 or programmatically:
