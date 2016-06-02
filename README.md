@@ -29,7 +29,7 @@ Just add the Source folder to your project or use [CocoaPods](https://cocoapods.
 pod 'PreviewTransition'
 ```
 
-or [Carthage](https://github.com/Carthage/Carthage) users can simply add Mantle to their `Cartfile`:
+or [Carthage](https://github.com/Carthage/Carthage) users can simply add to their `Cartfile`:
 ```
 github "Ramotion/preview-transition"
 ```
