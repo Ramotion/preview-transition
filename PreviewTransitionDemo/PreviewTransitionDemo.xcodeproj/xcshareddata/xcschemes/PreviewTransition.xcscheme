@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8499D8B61D006020004B5B37"
-               BuildableName = "PreivewTransition.framework"
-               BlueprintName = "PreivewTransition"
+               BuildableName = "PreviewTransition.framework"
+               BlueprintName = "PreviewTransition"
                ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8499D8B61D006020004B5B37"
-            BuildableName = "PreivewTransition.framework"
-            BlueprintName = "PreivewTransition"
+            BuildableName = "PreviewTransition.framework"
+            BlueprintName = "PreviewTransition"
             ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8499D8B61D006020004B5B37"
-            BuildableName = "PreivewTransition.framework"
-            BlueprintName = "PreivewTransition"
+            BuildableName = "PreviewTransition.framework"
+            BlueprintName = "PreviewTransition"
             ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

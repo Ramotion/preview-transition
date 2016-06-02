@@ -33,8 +33,8 @@
 		848BD7E51CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 		848BD7E61CCF54620046DC13 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 		8499D8BA1D006020004B5B37 /* PreivewTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 8499D8B91D006020004B5B37 /* PreivewTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8499D8BE1D006020004B5B37 /* PreivewTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8499D8B71D006020004B5B37 /* PreivewTransition.framework */; };
-		8499D8BF1D006020004B5B37 /* PreivewTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8499D8B71D006020004B5B37 /* PreivewTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8499D8BE1D006020004B5B37 /* PreviewTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8499D8B71D006020004B5B37 /* PreviewTransition.framework */; };
+		8499D8BF1D006020004B5B37 /* PreviewTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8499D8B71D006020004B5B37 /* PreviewTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8499D8C41D006062004B5B37 /* ConstraintsHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */; };
 		8499D8C51D006066004B5B37 /* ParallaxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E221CB289DC001FC263 /* ParallaxCell.swift */; };
 		8499D8C61D00607B004B5B37 /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84204E241CB289DC001FC263 /* TimeExtensions.swift */; };
@@ -71,7 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8499D8BF1D006020004B5B37 /* PreivewTransition.framework in Embed Frameworks */,
+				8499D8BF1D006020004B5B37 /* PreviewTransition.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +98,7 @@
 		84204E2E1CB28B5B001FC263 /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		848526511CD39CFB0052BEAD /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		848BD7E41CCF54620046DC13 /* ConstraintsHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHalper.swift; sourceTree = "<group>"; };
-		8499D8B71D006020004B5B37 /* PreivewTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PreivewTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8499D8B71D006020004B5B37 /* PreviewTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PreviewTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8499D8B91D006020004B5B37 /* PreivewTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreivewTransition.h; sourceTree = "<group>"; };
 		8499D8BB1D006020004B5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A36E0D1CD88EEA00AEC2F2 /* LayerAnimationHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerAnimationHalper.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8499D8BE1D006020004B5B37 /* PreivewTransition.framework in Frameworks */,
+				8499D8BE1D006020004B5B37 /* PreviewTransition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +157,7 @@
 			children = (
 				84204DF91CB2869E001FC263 /* PreviewTransitionDemo.app */,
 				84204E0D1CB2869E001FC263 /* PreviewTransitionDemoTests.xctest */,
-				8499D8B71D006020004B5B37 /* PreivewTransition.framework */,
+				8499D8B71D006020004B5B37 /* PreviewTransition.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,9 +352,9 @@
 			productReference = 84204E0D1CB2869E001FC263 /* PreviewTransitionDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8499D8B61D006020004B5B37 /* PreivewTransition */ = {
+		8499D8B61D006020004B5B37 /* PreviewTransition */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8499D8C21D006020004B5B37 /* Build configuration list for PBXNativeTarget "PreivewTransition" */;
+			buildConfigurationList = 8499D8C21D006020004B5B37 /* Build configuration list for PBXNativeTarget "PreviewTransition" */;
 			buildPhases = (
 				8499D8B21D006020004B5B37 /* Sources */,
 				8499D8B31D006020004B5B37 /* Frameworks */,
@@ -365,9 +365,9 @@
 			);
 			dependencies = (
 			);
-			name = PreivewTransition;
+			name = PreviewTransition;
 			productName = PreivewTransition;
-			productReference = 8499D8B71D006020004B5B37 /* PreivewTransition.framework */;
+			productReference = 8499D8B71D006020004B5B37 /* PreviewTransition.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -409,7 +409,7 @@
 			targets = (
 				84204DF81CB2869E001FC263 /* PreviewTransitionDemo */,
 				84204E0C1CB2869E001FC263 /* PreviewTransitionDemoTests */,
-				8499D8B61D006020004B5B37 /* PreivewTransition */,
+				8499D8B61D006020004B5B37 /* PreviewTransition */,
 			);
 		};
 /* End PBXProject section */
@@ -522,7 +522,7 @@
 		};
 		8499D8BD1D006020004B5B37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8499D8B61D006020004B5B37 /* PreivewTransition */;
+			target = 8499D8B61D006020004B5B37 /* PreviewTransition */;
 			targetProxy = 8499D8BC1D006020004B5B37 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -762,13 +762,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8499D8C21D006020004B5B37 /* Build configuration list for PBXNativeTarget "PreivewTransition" */ = {
+		8499D8C21D006020004B5B37 /* Build configuration list for PBXNativeTarget "PreviewTransition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8499D8C01D006020004B5B37 /* Debug */,
 				8499D8C11D006020004B5B37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
