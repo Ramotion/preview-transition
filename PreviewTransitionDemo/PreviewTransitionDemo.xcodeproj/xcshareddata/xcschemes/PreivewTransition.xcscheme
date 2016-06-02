@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84204DF81CB2869E001FC263"
-               BuildableName = "PreviewTransitionDemo.app"
-               BlueprintName = "PreviewTransitionDemo"
-               ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84204E0C1CB2869E001FC263"
-               BuildableName = "PreviewTransitionDemoTests.xctest"
-               BlueprintName = "PreviewTransitionDemoTests"
+               BlueprintIdentifier = "8499D8B61D006020004B5B37"
+               BuildableName = "PreivewTransition.framework"
+               BlueprintName = "PreivewTransition"
                ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84204DF81CB2869E001FC263"
-            BuildableName = "PreviewTransitionDemo.app"
-            BlueprintName = "PreviewTransitionDemo"
-            ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -65,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84204DF81CB2869E001FC263"
-            BuildableName = "PreviewTransitionDemo.app"
-            BlueprintName = "PreviewTransitionDemo"
+            BlueprintIdentifier = "8499D8B61D006020004B5B37"
+            BuildableName = "PreivewTransition.framework"
+            BlueprintName = "PreivewTransition"
             ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -84,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84204DF81CB2869E001FC263"
-            BuildableName = "PreviewTransitionDemo.app"
-            BlueprintName = "PreviewTransitionDemo"
+            BlueprintIdentifier = "8499D8B61D006020004B5B37"
+            BuildableName = "PreivewTransition.framework"
+            BlueprintName = "PreivewTransition"
             ReferencedContainer = "container:PreviewTransitionDemo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

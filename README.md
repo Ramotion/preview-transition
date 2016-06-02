@@ -1,6 +1,7 @@
 ![header](./header.png)
 # Preview-transition [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
 [![CocoaPods](https://img.shields.io/cocoapods/p/PreviewTransition.svg)](https://cocoapods.org/pods/PreviewTransition)
 [![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
@@ -27,6 +28,12 @@ Just add the Source folder to your project or use [CocoaPods](https://cocoapods.
 ``` ruby
 pod 'PreviewTransition'
 ```
+
+or [Carthage](https://github.com/Carthage/Carthage) users can simply add Mantle to their `Cartfile`:
+```
+github "Ramotion/preview-transition"
+```
+
 ## Usage
 
 1) ``` import PreviewTransition ```
