@@ -40,11 +40,11 @@ github "Ramotion/preview-transition"
 
 2) Create UITableViewController inherit, inheriting from ```PTTableViewController```
 
-3) Add UITableVeiwDelegate methods
+3) Add UITableViewDelegate methods
 
 ```swift
 public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return <RowsCoutn>
+    return <RowsCount>
 }
 
 public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,8 +54,8 @@ public override func tableView(tableView: UITableView, cellForRowAtIndexPath ind
 
 4) add a ParallaxCell
 
-strorybords:
-create a cell and inherit from ParallaxCell; don't forget set the identifier <CellIdentifier>
+storyboards:
+create a cell and inherit from ```ParallaxCell```; don't forget set the identifier ```<CellIdentifier>```
 
 or programmatically:
 register a cell in viewDidLoad ```tableView.registerClass(ParallaxCell, forCellReuseIdentifier:<CellIdentifier>)```
