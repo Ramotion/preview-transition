@@ -1,0 +1,6 @@
+DemoTableViewController.swift
+	public class DemoTableViewController: PTTableViewController
+	public class DemoTableViewController : PTTableViewController
+DemoDetailViewController.swift
+	public class DemoDetailViewController: PTDetailViewController
+	public class DemoDetailViewController : PTDetailViewController

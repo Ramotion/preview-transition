@@ -23,6 +23,7 @@
 
 import UIKit
 
+/// Base UITableViewController for preview transition
 public class PTTableViewController: UITableViewController {
   
   internal var currentCell: ParallaxCell?
@@ -35,6 +36,11 @@ public class PTTableViewController: UITableViewController {
 
 public extension PTTableViewController {
   
+  /**
+   Pushes a view controller onto the receiver’s stack and updates the display whith custom animation.
+   
+   - parameter viewController: The view controller to push onto the stack.
+   */
   public func pushViewController(viewController: PTDetailViewController) {
     
     guard let currentCell = currentCell,

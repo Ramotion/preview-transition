@@ -23,8 +23,10 @@
 
 import UIKit
 
+/// UITableViewCell with parallax background
 public class ParallaxCell: UITableViewCell {
   
+  /// Custom separator view
   public var separatorView: UIView?
   
   var topSeparator: UIView? // only for animation
@@ -38,12 +40,16 @@ public class ParallaxCell: UITableViewCell {
   
   var parallaxTitleY: NSLayoutConstraint?
   
+  /// parallax offset
   @IBInspectable public var difference: CGFloat = 100 // image parallax
   
   var bgImage: UIImageView?
   var parallaxTitle: UILabel?
   
+  /// The foreground view’s background color.
   @IBInspectable public var foregroundColor = UIColor.blackColor()
+  
+  /// The foreground view’s alpha.
   @IBInspectable public var foregroundAlpha: CGFloat = 0.5
   
   var foregroundView: UIView?
@@ -54,11 +60,27 @@ public class ParallaxCell: UITableViewCell {
   
   private var damping: CGFloat = 0.78
   
+  /**
+   Initializes a view from data in a given unarchiver.
+   
+   - parameter aDecoder: An unarchiver object.
+   
+   - returns: An initialized UITableViewCell object.
+   */
   public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     commonInit()
   }
   
+  
+  /**
+   Initializes a table cell with a style and a reuse identifier and returns it to the caller.
+
+   - parameter style:           A constant indicating a cell style. See UITableViewCellStyle for descriptions of these constants.
+   - parameter reuseIdentifier: A string used to identify the cell object if it is to be reused for drawing multiple rows of a table view. Pass nil if the cell object is not to be reused. You should use the same reuse identifier for all cells of the same form.
+   
+   - returns: an initialized UITableViewCell object or nil if the object could not be created.
+   */
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     commonInit()
@@ -116,10 +138,16 @@ extension ParallaxCell {
   }
 }
 
-// MARK: public
+// MARK: Methods
 
 public extension ParallaxCell {
 
+  /**
+   Sets the contents of the background image and title label
+   
+   - parameter image: The image object which set to the backgroundImageView
+   - parameter title: The text to be displayed in the Cell
+   */
   public func setImage(image: UIImage, title: String) {
     bgImage?.image = image
     parallaxTitle?.text = title

@@ -23,10 +23,11 @@
 
 import UIKit
 
+/// Base UIViewController for preview transition
 public class PTDetailViewController: UIViewController {
   
-  public var bgImage: UIImage?
-  public var titleText: String?
+  var bgImage: UIImage?
+  var titleText: String?
   
   private var backgroundImageView: UIImageView?
 }
@@ -65,6 +66,9 @@ extension  PTDetailViewController {
 
 extension PTDetailViewController {
   
+  /**
+   Pops the top view controller from the navigation stack and updates the display with custom animation.
+   */
   public func popViewController() {
     
     if let navigationController = self.navigationController {
