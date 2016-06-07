@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'PreviewTransition'
-  s.version      = '0.1.2'
+  s.version      = '1.1.4'
   s.summary      = 'Transition animation'
   s.license      = 'MIT'
   s.homepage     = 'https://github.com/Ramotion/preview-transition'

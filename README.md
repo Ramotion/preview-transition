@@ -4,6 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
 [![CocoaPods](https://img.shields.io/cocoapods/p/PreviewTransition.svg)](https://cocoapods.org/pods/PreviewTransition)
 [![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/PreviewTransition.svg)](https://cdn.rawgit.com/Ramotion/preview-transition/master/docs/index.html)
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
 
 [shot on dribbble](https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source):
