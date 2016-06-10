@@ -46,15 +46,137 @@
         <section>
           <section class="section">
             
-            <a href='#previewtransitiondemo' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='previewtransitiondemo'>PreviewTransitionDemo</h1>
-<a href='#authors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='authors'>Authors</h3>
+            <p><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png" alt="header"></p>
+<a href='#preview_transition_a_href_http_twitter_com_ramotion_img_src_https_img_shields_io_badge_twitter_ramotion_blue_svg_style_flat_alt_twitter_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='preview_transition_a_href_http_twitter_com_ramotion_img_src_https_img_shields_io_badge_twitter_ramotion_blue_svg_style_flat_alt_twitter_a'>Preview-transition <a href="http://twitter.com/Ramotion"><img src="https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat" alt="Twitter"></a></h1>
 
-<p>AlexKalinkin</p>
+<p><a href="https://travis-ci.org/Ramotion/preview-transition.svg?branch=master"><img src="https://img.shields.io/travis/Ramotion/preview-transition.svg" alt="Travis"></a>
+<a href="https://github.com/Ramotion/preview-transition"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://cocoapods.org/pods/PreviewTransition"><img src="https://img.shields.io/cocoapods/p/PreviewTransition.svg" alt="CocoaPods"></a>
+<a href="http://cocoapods.org/pods/PreviewTransition"><img src="https://img.shields.io/cocoapods/v/PreviewTransition.svg" alt="CocoaPods"></a>
+<a href="https://cdn.rawgit.com/Ramotion/preview-transition/master/docs/index.html"><img src="https://img.shields.io/cocoapods/metrics/doc-percent/PreviewTransition.svg" alt="CocoaPods"></a>
+<a href="https://codebeat.co/projects/github-com-ramotion-preview-transition"><img src="https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea" alt="codebeat badge"></a></p>
+
+<p><a href="https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source">shot on dribbble</a>:
+<p align="center">
+<a href="https://dribbble.com/shots/2694049-iOS-Pagination-Controller-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
+</p></p>
+
+<p>The <a href="https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=preview-transition">iPhone mockup</a> available <a href="https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=preview-transition">here</a>.</p>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>iOS 8.0+</li>
+<li>Xcode 7.3</li>
+</ul>
+<a href='#licence' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='licence'>Licence</h2>
+
+<p>Preview-transition is released under the MIT license.
+See <a href="./LICENSE">LICENSE</a> for details.</p>
+
+<p>Just add the Source folder to your project or use <a href="https://cocoapods.org">CocoaPods</a> like this:
+<code>ruby
+pod &#39;PreviewTransition&#39;
+</code></p>
+
+<p>or <a href="https://github.com/Carthage/Carthage">Carthage</a> users can simply add to their <code>Cartfile</code>:
+<code>
+github &quot;Ramotion/preview-transition&quot;
+</code></p>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+
+<p>1) <code>import PreviewTransition</code></p>
+
+<p>2) Create UITableViewController inherit, inheriting from <code>PTTableViewController</code></p>
+
+<p>3) Add UITableViewDelegate methods</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">numberOfRowsInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="kt">RowsCount</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">cellForRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UITableViewCell</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">CellIdentifier</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>4) add a ParallaxCell</p>
+
+<p>storyboards:
+create a cell and inherit from <code>ParallaxCell</code>; don&rsquo;t forget set the identifier <code>&lt;CellIdentifier&gt;</code></p>
+
+<p>or programmatically:
+register a cell in viewDidLoad <code>tableView.registerClass(ParallaxCell, forCellReuseIdentifier:&lt;CellIdentifier&gt;)</code></p>
+
+<p>5) set cell height</p>
+
+<p>6) create image names (image sizes must be equal to screen size or bigger)</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">image_name</span><span class="p">,</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">image_name</span><span class="p">]</span> <span class="c1">// image names</span>
+</code></pre>
+
+<p>7) set image and text for ParallaxCell</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">willDisplayCell</span> <span class="nv">cell</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span> <span class="n">forRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">cell</span> <span class="k">as?</span> <span class="kt">ParallaxCell</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="nv">imageName</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">indexPath</span><span class="o">.</span><span class="n">row</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="n">imageName</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">cell</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="o">&lt;</span><span class="kt">SetText</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>your tableViewController should look like <a href="https://github.com/Ramotion/preview-transition/blob/master/PreviewTransitionDemo/PreviewTransitionDemo/ViewController/DemoTableViewController.swift">DemoTableViewController</a></p>
+
+<p>Method <code>public override func tableView(tableView: didSelectRowAtIndexPath indexPath:)</code> we will add later. (step 10)</p>
+
+<p>8) Create UIViewController, inheriting from <code>PTDetailViewController</code></p>
+
+<p>9) Add action for backButton and call <code>popViewController()</code></p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">backButtonHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">popViewController</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>10) Push this UIViewController in UITableViewController. Add method</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">// create viewController</span>
+  <span class="kd">let</span> <span class="o">&lt;</span><span class="kt">YourViewController</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">storyboard</span><span class="p">?</span><span class="o">.</span><span class="nf">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="k">case</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="k">as</span> <span class="o">&lt;</span><span class="kt">YourViewController</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">viewController</span> <span class="p">{</span>
+     <span class="nf">pushViewController</span><span class="p">(</span><span class="n">viewController</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>11) Configure UINavigationBar</p>
+<pre class="highlight swift"><code><span class="c1">// transparent background</span>
+<span class="kt">UINavigationBar</span><span class="o">.</span><span class="nf">appearance</span><span class="p">()</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(),</span> <span class="nv">forBarMetrics</span><span class="p">:</span> <span class="o">.</span><span class="kt">Default</span><span class="p">)</span>
+<span class="kt">UINavigationBar</span><span class="o">.</span><span class="nf">appearance</span><span class="p">()</span><span class="o">.</span><span class="n">shadowImage</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">()</span>
+<span class="kt">UINavigationBar</span><span class="o">.</span><span class="nf">appearance</span><span class="p">()</span><span class="o">.</span><span class="n">translucent</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kt">UINavigationBar</span><span class="o">.</span><span class="nf">appearance</span><span class="p">()</span><span class="o">.</span><span class="n">tintColor</span> <span class="o">=</span> <span class="o">.</span><span class="nf">whiteColor</span><span class="p">()</span>
+
+<span class="c1">// set font</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">font</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="o">&lt;</span><span class="kt">Font</span> <span class="n">name</span><span class="o">&gt;</span> <span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">UINavigationBar</span><span class="o">.</span><span class="nf">appearance</span><span class="p">()</span><span class="o">.</span><span class="n">titleTextAttributes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="kt">NSForegroundColorAttributeName</span> <span class="p">:</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">whiteColor</span><span class="p">(),</span>
+        <span class="kt">NSFontAttributeName</span> <span class="p">:</span> <span class="n">font</span>
+      <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
+
+<p>The project maintained by <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=preview-transition">app development agency</a> <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=preview-transition">Ramotion Inc.</a>
+See our other <a href="https://github.com/ramotion">open-source projects</a> or <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=preview-transition">hire</a> us to design, develop, and grow your product.</p>
+
+<p><a href="https://twitter.com/intent/tweet?text=https://github.com/ramotion/preview-transition"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Twitter URL"></a>
+<a href="https://twitter.com/ramotion"><img src="https://img.shields.io/twitter/follow/ramotion.svg?style=social" alt="Twitter Follow"></a></p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">AlexKalinkin</a>. All rights reserved. (Last updated: 2016-06-07)</p>
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">AlexKalinkin</a>. All rights reserved. (Last updated: 2016-06-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
