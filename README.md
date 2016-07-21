@@ -1,4 +1,4 @@
-![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)
+[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
 # Preview-transition [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
@@ -7,7 +7,9 @@
 [![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/PreviewTransition.svg)](https://cdn.rawgit.com/Ramotion/preview-transition/master/docs/index.html)
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
 
-[shot on dribbble](https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source):
+## About
+This project is maintained by Ramotion which specializes in building dedicated engineering teams and developing custom software.<br> [Contact our team](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
+
 <p align="center">
 <a href="https://dribbble.com/shots/2694049-iOS-Pagination-Controller-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
 </p>
@@ -130,9 +132,7 @@ if let font = UIFont(name: <Font name> , size: 18) {
 }
 ```
 
-## About
-The project maintained by [app development agency](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) [Ramotion Inc.](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition)
-See our other [open-source projects](https://github.com/ramotion) or [hire](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) us to design, develop, and grow your product.
+## Follow us
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/preview-transition)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
