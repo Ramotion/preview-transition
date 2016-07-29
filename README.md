@@ -1,4 +1,4 @@
-[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
+[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
 # Preview-transition [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
@@ -8,7 +8,7 @@
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
 
 ## About
-This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
+This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
 
 <p align="center">
 <a href="https://dribbble.com/shots/2694049-iOS-Pagination-Controller-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
