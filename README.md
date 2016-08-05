@@ -11,7 +11,7 @@
 This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
 
 <p align="center">
-<a href="https://dribbble.com/shots/2694049-iOS-Pagination-Controller-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
+<a href="https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
 </p>
 
 The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) available [here](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition).
