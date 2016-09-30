@@ -14,13 +14,13 @@ extension UIView {
     UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
     
     let context = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(context, frame.origin.x * -1, frame.origin.y * -1)
+    context!.translateBy(x: frame.origin.x * -1, y: frame.origin.y * -1)
     
     guard let currentContext = UIGraphicsGetCurrentContext() else {
       return nil
     }
     
-    self.layer.renderInContext(currentContext)
+    self.layer.render(in: currentContext)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
@@ -41,10 +41,10 @@ extension UIImageView {
     
     blurfilter.setValue(value, forKey: kCIInputRadiusKey)
     blurfilter.setValue(imageToBlur, forKey: "inputImage")
-    let resultImage = blurfilter.valueForKey("outputImage") as! CIImage
-    var blurredImage = UIImage(CIImage: resultImage)
-    let cropped:CIImage=resultImage.imageByCroppingToRect(CGRectMake(0, 0,imageToBlur.extent.size.width, imageToBlur.extent.size.height))
-    blurredImage = UIImage(CIImage: cropped)
+    let resultImage = blurfilter.value(forKey: "outputImage") as! CIImage
+    var blurredImage = UIImage(ciImage: resultImage)
+    let cropped:CIImage=resultImage.cropping(to: CGRect(x: 0, y: 0, width: imageToBlur.extent.size.width, height: imageToBlur.extent.size.height))
+    blurredImage = UIImage(ciImage: cropped)
     self.image = blurredImage
   }
 

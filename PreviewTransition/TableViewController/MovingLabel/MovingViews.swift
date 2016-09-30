@@ -24,28 +24,29 @@
 import UIKit
 
 internal enum MovingDirection {
-    case Up
-    case Down
+    case up
+    case down
 }
 
-internal protocol Moving {
+internal protocol Moving: class {
   
   var defaultYPosition: CGFloat {get set}
   
-  mutating func move(duration: Double, direction: MovingDirection, completion: ((Bool) -> Void)?)
+  func move(_ duration: Double, direction: MovingDirection, completion: ((Bool) -> Void)?)
 }
 
 extension Moving where Self: UIView {
   
-  mutating func move(duration: Double, direction: MovingDirection, completion: ((Bool) -> Void)?) {
-    UIView.animateWithDuration(duration,
+  func move(_ duration: Double, direction: MovingDirection, completion: ((Bool) -> Void)?) {
+    UIView.animate(withDuration: duration,
                                delay: 0,
                                usingSpringWithDamping: 0.78,
                                initialSpringVelocity: 0,
-                               options: .CurveEaseInOut,
-                               animations: { () -> Void in
+                               options: UIViewAnimationOptions(),
+                               animations: { [weak self] () -> Void in
+                                guard let `self` = self else { return }
       var toYPosition = self.defaultYPosition
-      if direction == .Up {
+      if direction == .up {
         self.defaultYPosition = self.frame.origin.y
         toYPosition = 20
       }
@@ -61,17 +62,17 @@ internal class MovingLabel: UILabel, Moving {
 internal class MovingView: UIView {
   var defaultYPosition: CGFloat = 0
   
-  internal func move(duration: Double, direction: MovingDirection, distance: CGFloat, completion: ((Bool) -> Void)? = nil) {
+  internal func move(_ duration: Double, direction: MovingDirection, distance: CGFloat, completion: ((Bool) -> Void)? = nil) {
     var yPosition = defaultYPosition - 2
-    if direction == .Down {
+    if direction == .down {
       defaultYPosition = frame.origin.y
       yPosition = distance
     }
-    UIView.animateWithDuration(duration,
+    UIView.animate(withDuration: duration,
                                delay: 0,
                                usingSpringWithDamping: 0.78,
                                initialSpringVelocity: 0,
-                               options: .CurveEaseInOut,
+                               options: UIViewAnimationOptions(),
                                animations: { () -> Void in
                                 self.frame.origin.y = yPosition
     }, completion: completion)

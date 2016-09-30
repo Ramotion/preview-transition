@@ -48,11 +48,11 @@ extension DemoDetailViewController {
     super.viewDidLoad()
     
     backButton = createBackButton()
-    createNavigationBarBackItem(backButton)
+    createNavigationBarBackItem(button: backButton)
     
     // animations
-    showBackButtonDuration(0.3)
-    showControlViewDuration(0.3)
+    showBackButtonDuration(duration: 0.3)
+    showControlViewDuration(duration: 0.3)
     
     createBlurView()
   }
@@ -62,14 +62,14 @@ extension DemoDetailViewController {
 
 extension DemoDetailViewController {
   
-  private func createBackButton() -> UIButton {
+  fileprivate func createBackButton() -> UIButton {
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: 22, height: 44))
-    button.setImage(UIImage.Asset.Back.image, forState: .Normal)
-    button.addTarget(self, action: #selector(DemoDetailViewController.backButtonHandler) , forControlEvents: .TouchUpInside)
+    button.setImage(UIImage.Asset.Back.image, for: .normal)
+    button.addTarget(self, action: #selector(DemoDetailViewController.backButtonHandler) , for: .touchUpInside)
     return button
   }
   
-  private func createNavigationBarBackItem(button: UIButton?) -> UIBarButtonItem? {
+  fileprivate func createNavigationBarBackItem(button: UIButton?) -> UIBarButtonItem? {
     guard let button = button else {
       return nil
     }
@@ -79,36 +79,38 @@ extension DemoDetailViewController {
     return buttonItem
   }
   
-  private func createBlurView() -> UIView {
+  fileprivate func createBlurView() -> UIView {
     let imageFrame = CGRect(x: 0, y: view.frame.size.height - controlHeightConstraint.constant, width: view.frame.width, height: controlHeightConstraint.constant)
-    let image = view.makeScreenShotFromFrame(imageFrame)
+    let image = view.makeScreenShotFromFrame(frame: imageFrame)
     let screnShotImageView = UIImageView(image: image)
     screnShotImageView.translatesAutoresizingMaskIntoConstraints = false
-    screnShotImageView.blurViewValue(5)
-    controlView.insertSubview(screnShotImageView, atIndex: 0)
+    screnShotImageView.blurViewValue(value: 5)
+    controlView.insertSubview(screnShotImageView, at: 0)
     // added constraints
-    [NSLayoutAttribute.Left, .Right, .Bottom, .Top].forEach { attribute in
+    [NSLayoutAttribute.left, .right, .bottom, .top].forEach { attribute in
       (self.controlView, screnShotImageView) >>>- {
         $0.attribute = attribute
+        return
       }
     }
     
-    createMaskView(screnShotImageView)
+    createMaskView(onView: screnShotImageView)
     
     return screnShotImageView
   }
 
-  private func createMaskView(onView: UIView) {
+  fileprivate func createMaskView(onView: UIView) {
     let blueView = UIView(frame: CGRect.zero)
-    blueView.backgroundColor = .blackColor()
+    blueView.backgroundColor = .black
     blueView.translatesAutoresizingMaskIntoConstraints = false
     blueView.alpha = 0.4
     onView.addSubview(blueView)
     
     // add constraints
-    [NSLayoutAttribute.Left, .Right, .Bottom, .Top].forEach { attribute in
+    [NSLayoutAttribute.left, .right, .bottom, .top].forEach { attribute in
       (onView, blueView) >>>- {
         $0.attribute = attribute
+        return
       }
     }
   }
@@ -118,40 +120,40 @@ extension DemoDetailViewController {
 
 extension DemoDetailViewController {
   
-  private func showBackButtonDuration(duration: Double) {
-    backButton?.rotateDuration(duration, from: CGFloat(-M_PI_4), to: 0)
-    backButton?.scaleDuration(duration, from: 0.5, to: 1)
-    backButton?.opacityDuration(duration, from: 0, to: 1)
+  fileprivate func showBackButtonDuration(duration: Double) {
+    backButton?.rotateDuration(duration: duration, from: CGFloat(-M_PI_4), to: 0)
+    backButton?.scaleDuration(duration: duration, from: 0.5, to: 1)
+    backButton?.opacityDuration(duration: duration, from: 0, to: 1)
   }
   
-  private func showControlViewDuration(duration: Double) {
-    moveUpControllerDuration(duration)
-    showControlButtonsDuration(duration)
-    showControlLabelDuration(duration)
+  fileprivate func showControlViewDuration(duration: Double) {
+    moveUpControllerDuration(duration: duration)
+    showControlButtonsDuration(duration: duration)
+    showControlLabelDuration(duration: duration)
   }
   
-  private func moveUpControllerDuration(duration: Double) {
+  fileprivate func moveUpControllerDuration(duration: Double) {
     controlBottomConstrant.constant = -controlHeightConstraint.constant
     view.layoutIfNeeded()
     
     controlBottomConstrant.constant = 0
-    UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseOut, animations: { 
+    UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { 
       self.view.layoutIfNeeded()
     }, completion: nil)
   }
 
-  private func showControlButtonsDuration(duration: Double) {
+  fileprivate func showControlButtonsDuration(duration: Double) {
     [plusImageView, shareImageView, hertIconView].forEach {
-      $0.rotateDuration(duration, from: CGFloat(-M_PI_4), to: 0, delay: duration)
-      $0.scaleDuration(duration, from: 0.5, to: 1, delay: duration)
-      $0.alpha = 0
-      $0.opacityDuration(duration, from: 0, to: 1, delay: duration, remove: false)
+      $0?.rotateDuration(duration: duration, from: CGFloat(-M_PI_4), to: 0, delay: duration)
+      $0?.scaleDuration(duration: duration, from: 0.5, to: 1, delay: duration)
+      $0?.alpha = 0
+      $0?.opacityDuration(duration: duration, from: 0, to: 1, delay: duration, remove: false)
     }
   }
 
-  private func showControlLabelDuration(duration: Double) {
+  fileprivate func showControlLabelDuration(duration: Double) {
     controlTextLabel.alpha = 0
-    controlTextLabel.opacityDuration(duration, from: 0, to: 1, delay: duration, remove: false)
+    controlTextLabel.opacityDuration(duration: duration, from: 0, to: 1, delay: duration, remove: false)
     
     // move rigth
     let offSet: CGFloat = 20
@@ -159,7 +161,7 @@ extension DemoDetailViewController {
     view.layoutIfNeeded()
     
     controlTextLableLending.constant += offSet
-    UIView.animateWithDuration(duration * 2, delay: 0, options: .CurveEaseOut, animations: {
+    UIView.animate(withDuration: duration * 2, delay: 0, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
     }, completion: nil)
   }

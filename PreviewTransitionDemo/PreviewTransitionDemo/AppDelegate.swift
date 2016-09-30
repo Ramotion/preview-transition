@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     configureStatusBar()
     configureNavigationBar()
     return true
   }
 
-  func applicationWillResignActive(application: UIApplication) {
+  func applicationWillResignActive(_ application: UIApplication) {
     
   }
 
@@ -40,29 +40,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
   
-  private func configureNavigationBar() {
+  fileprivate func configureNavigationBar() {
     
     //transparent background
-    UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     UINavigationBar.appearance().shadowImage = UIImage()
-    UINavigationBar.appearance().translucent = true
-    UINavigationBar.appearance().tintColor = .whiteColor()
+    UINavigationBar.appearance().isTranslucent = true
+    UINavigationBar.appearance().tintColor = .white
     
     if let font = UIFont(name: "Avenir-medium" , size: 18) {
       UINavigationBar.appearance().titleTextAttributes = [
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSForegroundColorAttributeName : UIColor.white,
         NSFontAttributeName : font
       ]
     }
   }
   
-  private func configureStatusBar() {
-    guard  let statusBar = UIApplication.sharedApplication().valueForKey("statusBarWindow")?.valueForKey("statusBar") as? UIView else {
-      return
-    }
-
-    statusBar.backgroundColor = .clearColor()
-    UIApplication.sharedApplication().statusBarStyle = .LightContent
+  fileprivate func configureStatusBar() {
+//    guard  let statusBar = (UIApplication.shared.valueForKey("statusBarWindow") as AnyObject).value("statusBar") as? UIView else {
+//      return
+//    }
+//
+//    statusBar.backgroundColor = .clearColor()
+//    UIApplication.shared.statusBarStyle = .lightContent
   }
 }
 

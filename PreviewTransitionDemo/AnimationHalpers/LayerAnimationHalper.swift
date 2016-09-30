@@ -18,7 +18,7 @@ extension UIView {
     animation.timingFunction      = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     animation.beginTime           = CACurrentMediaTime() + delay
     if remove == false {
-      animation.removedOnCompletion = remove
+      animation.isRemovedOnCompletion = remove
       animation.fillMode            = kCAFillModeForwards
     }
     return animation
@@ -26,36 +26,36 @@ extension UIView {
 
   
   func rotateDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-    let animation = createAnimationFromKey("transform.rotation.z",
+    let animation = createAnimationFromKey(key: "transform.rotation.z",
                                            duration: duration,
                                            from: from,
                                            to: to,
                                            delay: delay,
                                            remove: remove)
-    layer.addAnimation(animation, forKey: nil)
+    layer.add(animation, forKey: nil)
   }
   
   
   func scaleDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-    let animation = createAnimationFromKey("transform.scale",
+    let animation = createAnimationFromKey(key: "transform.scale",
                                            duration: duration,
                                            from: from,
                                            to: to,
                                            delay: delay,
                                            remove: remove)
     
-    layer.addAnimation(animation, forKey: nil)
+    layer.add(animation, forKey: nil)
   }
   
   
   func opacityDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-    let animation = createAnimationFromKey("opacity",
+    let animation = createAnimationFromKey(key: "opacity",
                                            duration: duration,
                                            from: from,
                                            to: to,
                                            delay: delay,
                                            remove: remove)
     
-    layer.addAnimation(animation, forKey: nil)
+    layer.add(animation, forKey: nil)
   }
 }

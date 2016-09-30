@@ -22,14 +22,25 @@
 // THE SOFTWARE.
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 /// Base UITableViewController for preview transition
-public class PTTableViewController: UITableViewController {
+open class PTTableViewController: UITableViewController {
   
   internal var currentCell: ParallaxCell?
   
-  private var duration: Double = 0.65
-  private var currentTextLabel: MovingLabel?
+  fileprivate var duration: Double = 0.65
+  fileprivate var currentTextLabel: MovingLabel?
 }
 
 // MARK: public
@@ -41,24 +52,24 @@ public extension PTTableViewController {
    
    - parameter viewController: The view controller to push onto the stack.
    */
-  public func pushViewController(viewController: PTDetailViewController) {
+  public func pushViewController(_ viewController: PTDetailViewController) {
     
     guard let currentCell = currentCell,
     let navigationController = self.navigationController else {
       fatalError("current cell is empty or add navigationController")
     }
     
-    if let currentIndex = tableView.indexPathForCell(currentCell) {
-      let nextIndex = NSIndexPath(forRow: currentIndex.row + 1, inSection: currentIndex.section)
-      if case let nextCell as ParallaxCell = tableView.cellForRowAtIndexPath(nextIndex) {
+    if let currentIndex = tableView.indexPath(for: currentCell) {
+      let nextIndex = IndexPath(row: (currentIndex as NSIndexPath).row + 1, section: (currentIndex as NSIndexPath).section)
+      if case let nextCell as ParallaxCell = tableView.cellForRow(at: nextIndex) {
         nextCell.showTopSeparator()
-        nextCell.superview?.bringSubviewToFront(nextCell)
+        nextCell.superview?.bringSubview(toFront: nextCell)
       }
     }
     
     
     self.currentTextLabel = createTitleLable(currentCell)
-    currentTextLabel?.move(duration, direction: .Up, completion: nil)
+    currentTextLabel?.move(duration, direction: .up, completion: nil)
     
     currentCell.openCell(tableView, duration: duration)
     moveCells(tableView, currentCell: currentCell, duration: duration)
@@ -78,14 +89,14 @@ public extension PTTableViewController {
 
 extension PTTableViewController {
   
-  public override func viewDidLoad() {
+  open override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
-    tableView.separatorStyle = .None
+    tableView.separatorStyle = .none
   }
   
-  public override func viewWillAppear(animated: Bool) {
+  open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
     moveCellsBackIfNeed(duration) {
@@ -100,12 +111,12 @@ extension PTTableViewController {
 
 extension PTTableViewController {
   
-  private func createTitleLable(cell: ParallaxCell) -> MovingLabel {
+  fileprivate func createTitleLable(_ cell: ParallaxCell) -> MovingLabel {
     
     let yPosition = cell.frame.origin.y + cell.frame.size.height / 2.0 - 22 - tableView.contentOffset.y
-    let label = MovingLabel(frame: CGRect(x: 0, y: yPosition, width: UIScreen.mainScreen().bounds.size.width, height: 44))
-    label.textAlignment = .Center
-    label.backgroundColor = .clearColor()
+    let label = MovingLabel(frame: CGRect(x: 0, y: yPosition, width: UIScreen.main.bounds.size.width, height: 44))
+    label.textAlignment = .center
+    label.backgroundColor = .clear
     if let font = cell.parallaxTitle?.font,
       let text = cell.parallaxTitle?.text,
       let textColor = cell.parallaxTitle?.textColor {
@@ -118,7 +129,7 @@ extension PTTableViewController {
     return label
   }
   
-  private func createSeparator(color: UIColor?, height: CGFloat, cell: UITableViewCell) -> MovingView {
+  fileprivate func createSeparator(_ color: UIColor?, height: CGFloat, cell: UITableViewCell) -> MovingView {
     
     let yPosition = cell.frame.origin.y + cell.frame.size.height - tableView.contentOffset.y
     let separator = MovingView(frame: CGRect(x:0.0, y: yPosition, width: tableView.bounds.size.width, height: height))
@@ -135,9 +146,9 @@ extension PTTableViewController {
 
 extension PTTableViewController {
   
-  final public override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+  final public override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     
-    guard let currentCell = tableView.cellForRowAtIndexPath(indexPath) as? ParallaxCell else {
+    guard let currentCell = tableView.cellForRow(at: indexPath) as? ParallaxCell else {
       return indexPath
     }
     
@@ -150,17 +161,17 @@ extension PTTableViewController {
 
 extension PTTableViewController {
   
-  private func parallaxOffsetDidChange(offset: CGFloat) {
+  fileprivate func parallaxOffsetDidChange(_ offset: CGFloat) {
     
     for case let cell as ParallaxCell in tableView.visibleCells where cell != currentCell {
       cell.parallaxOffset(tableView)
     }
   }
   
-  private func moveCellsBackIfNeed(duration: Double, completion: () -> Void) {
+  fileprivate func moveCellsBackIfNeed(_ duration: Double, completion: @escaping () -> Void) {
     
     guard let currentCell = self.currentCell,
-          let currentIndex = tableView.indexPathForCell(currentCell) else {
+          let currentIndex = tableView.indexPath(for: currentCell) else {
       return
     }
     
@@ -168,8 +179,8 @@ extension PTTableViewController {
       
       if cell.isMovedHidden == false {continue}
       
-      if let index = tableView.indexPathForCell(cell) {
-        let direction = index.row < currentIndex.row ? ParallaxCell.Direction .Up : ParallaxCell.Direction.Down
+      if let index = tableView.indexPath(for: cell) {
+        let direction = (index as NSIndexPath).row < (currentIndex as NSIndexPath).row ? ParallaxCell.Direction .up : ParallaxCell.Direction.down
         cell.animationMoveCell(direction, duration: duration, tableView: tableView, selectedIndexPaht: currentIndex, close: true)
         cell.isMovedHidden = false
       }
@@ -177,7 +188,7 @@ extension PTTableViewController {
     delay(duration, closure: completion)
   }
   
-  private func closeCurrentCellIfNeed(duration: Double) {
+  fileprivate func closeCurrentCellIfNeed(_ duration: Double) {
     
     guard let currentCell = self.currentCell else {
       return
@@ -188,27 +199,27 @@ extension PTTableViewController {
     }
   }
   
-  private func moveDownCurrentLabelIfNeed() {
+  fileprivate func moveDownCurrentLabelIfNeed() {
     
-    guard var currentTextLabel = self.currentTextLabel else {
+    guard let currentTextLabel = self.currentTextLabel else {
       return
     }
-    currentTextLabel.move(duration, direction: .Down) { (finished) in
+    currentTextLabel.move(duration, direction: .down) { (finished) in
       currentTextLabel.removeFromSuperview()
       self.currentTextLabel = nil
     }
   }
   
 //  animtaions
-  private func moveCells(tableView: UITableView, currentCell: ParallaxCell, duration: Double) {
-    guard let currentIndex = tableView.indexPathForCell(currentCell) else {
+  fileprivate func moveCells(_ tableView: UITableView, currentCell: ParallaxCell, duration: Double) {
+    guard let currentIndex = tableView.indexPath(for: currentCell) else {
       return
     }
     
     for case let cell as ParallaxCell in tableView.visibleCells where cell != currentCell {
       cell.isMovedHidden = true
-      let row = tableView.indexPathForCell(cell)?.row
-      let direction = row < currentIndex.row ? ParallaxCell.Direction .Down : ParallaxCell.Direction.Up
+      let row = (tableView.indexPath(for: cell) as NSIndexPath?)?.row
+      let direction = row < (currentIndex as NSIndexPath).row ? ParallaxCell.Direction .down : ParallaxCell.Direction.up
       cell.animationMoveCell(direction, duration: duration, tableView: tableView, selectedIndexPaht: currentIndex, close: false)
     }
   }
@@ -218,7 +229,7 @@ extension PTTableViewController {
 
 extension PTTableViewController {
   
-  override public func scrollViewDidScroll(scrollView: UIScrollView) {
+  override open func scrollViewDidScroll(_ scrollView: UIScrollView) {
     parallaxOffsetDidChange(scrollView.contentOffset.y)
   }
 }

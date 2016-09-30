@@ -24,16 +24,16 @@
 import UIKit
 
 /// UITableViewCell with parallax background
-public class ParallaxCell: UITableViewCell {
+open class ParallaxCell: UITableViewCell {
   
   /// Custom separator view
-  public var separatorView: UIView?
+  open var separatorView: UIView?
   
   var topSeparator: UIView? // only for animation
   
   enum Direction {
-    case Up
-    case Down
+    case up
+    case down
   }
   
   var bgImageY: NSLayoutConstraint?
@@ -41,24 +41,24 @@ public class ParallaxCell: UITableViewCell {
   var parallaxTitleY: NSLayoutConstraint?
   
   /// parallax offset
-  @IBInspectable public var difference: CGFloat = 100 // image parallax
+  @IBInspectable open var difference: CGFloat = 100 // image parallax
   
   var bgImage: UIImageView?
   var parallaxTitle: UILabel?
   
   /// The foreground view’s background color.
-  @IBInspectable public var foregroundColor = UIColor.blackColor()
+  @IBInspectable open var foregroundColor = UIColor.black
   
   /// The foreground view’s alpha.
-  @IBInspectable public var foregroundAlpha: CGFloat = 0.5
+  @IBInspectable open var foregroundAlpha: CGFloat = 0.5
   
   var foregroundView: UIView?
   var isMovedHidden: Bool = false
   
-  private var closedBgImageYConstant: CGFloat = 0
-  private var closedYPosition: CGFloat = 0
+  fileprivate var closedBgImageYConstant: CGFloat = 0
+  fileprivate var closedYPosition: CGFloat = 0
   
-  private var damping: CGFloat = 0.78
+  fileprivate var damping: CGFloat = 0.78
   
   /**
    Initializes a view from data in a given unarchiver.
@@ -94,43 +94,57 @@ extension ParallaxCell {
   func commonInit() {
     
     layer.masksToBounds = false
-    selectionStyle = .None
+    selectionStyle = .none
     
     // create background image view
     let backgroundImageView = createBckgroundImage()
     
     // add constraints 
     if let bgSuperView = backgroundImageView.superview {
-      for attribute: NSLayoutAttribute in [.Leading, .Trailing] {
-        (bgSuperView, backgroundImageView) >>>- { $0.attribute = attribute }
+      for attribute: NSLayoutAttribute in [.leading, .trailing] {
+        (bgSuperView, backgroundImageView) >>>- {
+          $0.attribute = attribute
+          return
+        }
       }
-      bgImageY = (bgSuperView, backgroundImageView) >>>- { $0.attribute = .CenterY }
+      bgImageY = (bgSuperView, backgroundImageView) >>>- {
+        $0.attribute = .centerY
+        return
+      }
       backgroundImageView >>>- {
-        $0.attribute = .Height
+        $0.attribute = .height
         $0.constant = bounds.height + difference
+        return
       }
     }
     bgImage = backgroundImageView
     
     foregroundView = createForegroundView(foregroundColor)
-    contentView.backgroundColor = UIColor.blackColor()
+    contentView.backgroundColor = UIColor.black
     
     // create title label
     let titleLabel = createTitleLable()
-    for attribute: NSLayoutAttribute in [.Left, .Right] {
-        (contentView, titleLabel) >>>- { $0.attribute = attribute }
+    for attribute: NSLayoutAttribute in [.left, .right] {
+        (contentView, titleLabel) >>>- {
+          $0.attribute = attribute
+          return
       }
-      parallaxTitleY = (contentView, titleLabel) >>>- { $0.attribute = .CenterY }
+      }
+      parallaxTitleY = (contentView, titleLabel) >>>- {
+        $0.attribute = .centerY
+        return
+    }
       titleLabel >>>- {
-        $0.attribute = .Height
+        $0.attribute = .height
         $0.constant = bounds.height + difference
+        return
       }
     parallaxTitle = titleLabel
     
-    separatorView = createSeparator(.blackColor(), height: 2.0, verticalAttribure: .Bottom, verticalConstant: 0.0)
+    separatorView = createSeparator(.black, height: 2.0, verticalAttribure: .bottom, verticalConstant: 0.0)
   }
   
-  public override func prepareForReuse() {
+  open override func prepareForReuse() {
     if topSeparator?.superview != nil {
       topSeparator?.removeFromSuperview()
       topSeparator = nil
@@ -148,7 +162,7 @@ public extension ParallaxCell {
    - parameter image: The image object which set to the backgroundImageView
    - parameter title: The text to be displayed in the Cell
    */
-  public func setImage(image: UIImage, title: String) {
+  public func setImage(_ image: UIImage, title: String) {
     bgImage?.image = image
     parallaxTitle?.text = title
   }
@@ -158,9 +172,9 @@ public extension ParallaxCell {
 
 extension ParallaxCell {
   
-  func parallaxOffset(tableView: UITableView) {
+  func parallaxOffset(_ tableView: UITableView) {
     
-    guard let bgImageY = self.bgImageY where isMovedHidden == false else {
+    guard let bgImageY = self.bgImageY , isMovedHidden == false else {
       return
     }
   
@@ -173,7 +187,7 @@ extension ParallaxCell {
     bgImageY.constant = move
   }
   
-  func openCell(tableView: UITableView, duration: Double) {
+  func openCell(_ tableView: UITableView, duration: Double) {
     guard let superview = self.superview,
           let bgImageY = self.bgImageY else {
       return
@@ -186,53 +200,53 @@ extension ParallaxCell {
     let cellY = frame.origin.y - offsetY + frame.size.height / 2.0 + offsetY - tableView.frame.size.height / 2.0
     let cellFrame = CGRect(x: 0, y: cellY, width: tableView.frame.size.width, height: tableView.frame.size.height)
     frame = cellFrame
-    superview.sendSubviewToBack(self)
+    superview.sendSubview(toBack: self)
     
     // animation
     moveToCenter(duration , offset: offsetY)
-    parallaxTitle?.hidden = true
+    parallaxTitle?.isHidden = true
     foregroundHidden(true, duration: duration)
   }
   
-  func closeCell(duration: Double, tableView: UITableView, completion: () -> Void) {
+  func closeCell(_ duration: Double, tableView: UITableView, completion: @escaping () -> Void) {
     bgImageY?.constant = closedBgImageYConstant
-    UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: { () -> Void in
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
       self.layoutIfNeeded()
       self.center = CGPoint(x: self.center.x, y: self.closedYPosition)
       }, completion: {finished in
         
-      self.parallaxTitle?.hidden = false
+      self.parallaxTitle?.isHidden = false
         completion()
     })
     
     foregroundHidden(false, duration: duration / 2.0)
   }
 
-  func animationMoveCell(direction: Direction, duration: Double, tableView: UITableView, selectedIndexPaht: NSIndexPath, close: Bool) {
+  func animationMoveCell(_ direction: Direction, duration: Double, tableView: UITableView, selectedIndexPaht: IndexPath, close: Bool) {
     
     let selfYPosition = close == false ? frame.origin.y : closedYPosition
-    let selectedCellFrame = tableView.rectForRowAtIndexPath(selectedIndexPaht)
+    let selectedCellFrame = tableView.rectForRow(at: selectedIndexPaht)
     var dy: CGFloat = 0
     if selfYPosition < selectedCellFrame.origin.y {
       dy = selectedCellFrame.origin.y - tableView.contentOffset.y
     } else {
       dy = tableView.frame.size.height - (selectedCellFrame.origin.y - tableView.contentOffset.y + selectedCellFrame.size.height)
     }
-    dy = direction == .Down ? dy * -1 : dy
+    dy = direction == .down ? dy * -1 : dy
     if close == false {
       closedYPosition = center.y
     } else {
       center.y = closedYPosition - dy
     }
     
-    superview?.bringSubviewToFront(self)
-    UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: { () -> Void in
+    superview?.bringSubview(toFront: self)
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
       self.center.y = self.center.y + dy
     }, completion: nil)
   }
   
   func showTopSeparator() {
-    topSeparator = createSeparator(.blackColor(), height: 2, verticalAttribure: .Top, verticalConstant: -2)
+    topSeparator = createSeparator(.black, height: 2, verticalAttribure: .top, verticalConstant: -2)
   }
 }
 
@@ -240,15 +254,15 @@ extension ParallaxCell {
 
 extension ParallaxCell {
   
-  private func moveToCenter(duration: Double, offset: CGFloat) {
+  fileprivate func moveToCenter(_ duration: Double, offset: CGFloat) {
     bgImageY?.constant = 0
-    UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.78, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: { () -> Void in
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.78, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
       self.frame = CGRect(x: 0, y: offset, width: self.frame.size.width, height: self.frame.size.height)
       self.layoutIfNeeded()
     }, completion: nil)
   }
   
-  private func foregroundHidden(hidden: Bool, duration: Double) {
+  fileprivate func foregroundHidden(_ hidden: Bool, duration: Double) {
     guard let foregroundView = self.foregroundView else {
       return
     }
@@ -258,7 +272,7 @@ extension ParallaxCell {
       contentView.removeConstraints(currentConstrant)
       
       foregroundView >>>- {
-        $0.attribute = .Height
+        $0.attribute = .height
         $0.constant = 64
         $0.identifier = "Height"
       }
@@ -267,16 +281,16 @@ extension ParallaxCell {
       foregroundView.removeConstraints(currentConstrant)
       
       (contentView, foregroundView) >>>- {
-        $0.attribute = .Bottom
+        $0.attribute = .bottom
         $0.identifier = "Bottom"
       }
     }
     
-    UIView.animateWithDuration(duration,
+    UIView.animate(withDuration: duration,
                                delay: 0,
                                usingSpringWithDamping: damping * 2.0,
                                initialSpringVelocity: 0,
-                               options: .CurveEaseInOut,
+                               options: UIViewAnimationOptions(),
                                animations: { () -> Void in
       self.layoutIfNeeded()
     }, completion: nil)
@@ -287,37 +301,40 @@ extension ParallaxCell {
 
 extension ParallaxCell {
   
-  private func createBckgroundImage() -> UIImageView {
+  fileprivate func createBckgroundImage() -> UIImageView {
     
     let container = createImageContainer()
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.contentMode = .Center
+    imageView.contentMode = .center
     container.addSubview(imageView)
     return imageView
   }
   
-  private func createImageContainer() -> UIView {
+  fileprivate func createImageContainer() -> UIView {
     let view = UIView(frame: CGRect.zero)
     view.translatesAutoresizingMaskIntoConstraints = false
     view.layer.masksToBounds = true
     contentView.addSubview(view)
     
     // added constraints
-    for attribute: NSLayoutAttribute in [.Left, .Right, .Top, .Bottom] {
-      (contentView, view) >>>- { $0.attribute = attribute }
+    for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
+      (contentView, view) >>>- {
+        $0.attribute = attribute
+        return
+      }
     }
     
     return view
   }
 
   
-  private func createTitleLable() -> UILabel {
+  fileprivate func createTitleLable() -> UILabel {
     
     let label = UILabel()
-    label.backgroundColor = .clearColor()
+    label.backgroundColor = .clear
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = .Center
+    label.textAlignment = .center
     if case let font as UIFont = UINavigationBar.appearance().titleTextAttributes?[NSFontAttributeName] {
       label.font = font
     }
@@ -334,7 +351,7 @@ extension ParallaxCell {
 
 extension ParallaxCell {
   
-  private func createForegroundView(color: UIColor) -> UIView {
+  fileprivate func createForegroundView(_ color: UIColor) -> UIView {
     guard let bgImage = self.bgImage else {
       fatalError("set bgImage")
     }
@@ -347,11 +364,14 @@ extension ParallaxCell {
     contentView.insertSubview(foregroundView, aboveSubview: bgImage)
     
     // add constraints 
-    for attribute: NSLayoutAttribute in [.Left, .Right, .Top] {
-      (contentView, foregroundView) >>>- { $0.attribute = attribute }
+    for attribute: NSLayoutAttribute in [.left, .right, .top] {
+      (contentView, foregroundView) >>>- {
+        $0.attribute = attribute
+        return
+      }
     }
     (contentView, foregroundView) >>>- {
-      $0.attribute = .Bottom
+      $0.attribute = .bottom
       $0.identifier = "Bottom"
     }
     
@@ -359,14 +379,17 @@ extension ParallaxCell {
   }
   
   // return bottom constraint
-  private func createSeparator(color: UIColor, height: CGFloat, verticalAttribure: NSLayoutAttribute, verticalConstant: CGFloat) -> UIView {
+  fileprivate func createSeparator(_ color: UIColor, height: CGFloat, verticalAttribure: NSLayoutAttribute, verticalConstant: CGFloat) -> UIView {
     let separator = UIView(frame: CGRect.zero)
     separator.backgroundColor = color
     separator.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(separator)
     
-    for attribute: NSLayoutAttribute in [.Leading, .Trailing] {
-      (contentView, separator) >>>- { $0.attribute = attribute }
+    for attribute: NSLayoutAttribute in [.leading, .trailing] {
+      (contentView, separator) >>>- {
+        $0.attribute = attribute
+        return
+      }
     }
     
     (contentView, separator) >>>- {
@@ -375,7 +398,7 @@ extension ParallaxCell {
     }
     // height constraint
     separator >>>- {
-      $0.attribute = .Height
+      $0.attribute = .height
       $0.constant = height
     }
     return separator

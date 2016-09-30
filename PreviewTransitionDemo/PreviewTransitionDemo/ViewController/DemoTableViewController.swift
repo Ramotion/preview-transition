@@ -25,18 +25,18 @@ import UIKit
 
 public class DemoTableViewController: PTTableViewController {
   
-  private let items = [("1", "River cruise"), ("2", "North Island"), ("3", "Mountain trail"), ("4", "Southern Coast"), ("5", "Fishing place")] // image names
+  fileprivate let items = [("1", "River cruise"), ("2", "North Island"), ("3", "Mountain trail"), ("4", "Southern Coast"), ("5", "Fishing place")] // image names
 }
 
 // MARK: UITableViewDelegate
 
 extension DemoTableViewController {
   
-  public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 100
   }
   
-  public override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+  public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     
     guard let cell = cell as? ParallaxCell else {
       return
@@ -51,13 +51,13 @@ extension DemoTableViewController {
     }
   }
   
-  public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell: ParallaxCell = tableView.getReusableCellWithIdentifier(indexPath)
+  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell: ParallaxCell = tableView.getReusableCellWithIdentifier(indexPath: indexPath)
     return cell
   }
   
-  public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let storyboard = UIStoryboard.storyboard(.Main)
+  public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let storyboard = UIStoryboard.storyboard(storyboard: .Main)
     let detaleViewController: DemoDetailViewController = storyboard.instantiateViewController()
     pushViewController(detaleViewController)
   }

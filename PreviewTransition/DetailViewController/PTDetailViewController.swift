@@ -24,23 +24,23 @@
 import UIKit
 
 /// Base UIViewController for preview transition
-public class PTDetailViewController: UIViewController {
+open class PTDetailViewController: UIViewController {
   
   var bgImage: UIImage?
   var titleText: String?
   
-  private var backgroundImageView: UIImageView?
+  fileprivate var backgroundImageView: UIImageView?
 }
 
 // MARK: life cicle
 
 extension  PTDetailViewController {
   
-  public override func viewDidLoad() {
+  open override func viewDidLoad() {
     super.viewDidLoad()
     
     backgroundImageView = createBackgroundImage(bgImage)
-    view.backgroundColor = .blackColor()
+    view.backgroundColor = .black
     
     if let titleText = self.titleText {
       title = titleText
@@ -49,14 +49,14 @@ extension  PTDetailViewController {
     // hack 
     if let navigationController = self.navigationController {
       for case let label as UILabel in navigationController.view.subviews {
-        label.hidden = true
+        label.isHidden = true
       }
     }
     
     createNavBar(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
   }
   
-  public override func viewWillAppear(animated: Bool) {
+  open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
   }
@@ -73,10 +73,10 @@ extension PTDetailViewController {
     
     if let navigationController = self.navigationController {
       for case let label as UILabel in navigationController.view.subviews {
-        label.hidden = false
+        label.isHidden = false
       }
     }
-    navigationController?.popViewControllerAnimated(false)
+    navigationController?.popViewController(animated: false)
   }
 }
 
@@ -84,13 +84,13 @@ extension PTDetailViewController {
 
 extension PTDetailViewController {
   
-  private func createBackgroundImage(image: UIImage?) -> UIImageView {
+  fileprivate func createBackgroundImage(_ image: UIImage?) -> UIImageView {
     // add constraint closures
-    let addConstraint: (imageView: UIImageView, toView: UIView, attribute: NSLayoutAttribute) -> () = {
+    let addConstraint: (_ imageView: UIImageView, _ toView: UIView, _ attribute: NSLayoutAttribute) -> () = {
       (imageView, toView, attribute) in
       let constraint = NSLayoutConstraint(item: imageView,
         attribute: attribute,
-        relatedBy: .Equal,
+        relatedBy: .equal,
         toItem: toView,
         attribute: attribute,
         multiplier: 1,
@@ -102,29 +102,33 @@ extension PTDetailViewController {
     let imageView = UIImageView(frame: CGRect.zero)
     imageView.image = image
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.contentMode = .Center
-    view.insertSubview(imageView, atIndex: 0)
+    imageView.contentMode = .center
+    view.insertSubview(imageView, at: 0)
     
     // added constraints
-    for attribute in [NSLayoutAttribute.Leading, NSLayoutAttribute.Trailing, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
-      addConstraint(imageView: imageView, toView: view, attribute: attribute)
+    for attribute in [NSLayoutAttribute.leading, NSLayoutAttribute.trailing, NSLayoutAttribute.top, NSLayoutAttribute.bottom] {
+      addConstraint(imageView, view, attribute)
     }
     
     return imageView
   }
   
-  private func createNavBar(color: UIColor) -> UIView {
+  fileprivate func createNavBar(_ color: UIColor) -> UIView {
     let navBar = UIView(frame: CGRect.zero)
     navBar.backgroundColor = color
     navBar.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(navBar)
     
-    for attributes: NSLayoutAttribute in [.Left, .Right, .Top] {
-      (view, navBar) >>>- { $0.attribute = attributes }
+    for attributes: NSLayoutAttribute in [.left, .right, .top] {
+      (view, navBar) >>>- {
+        $0.attribute = attributes
+        return
+      }
     }
     navBar >>>- {
-      $0.attribute = .Height
+      $0.attribute = .height
       $0.constant = 64
+      return
     }
     
     return navBar

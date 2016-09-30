@@ -27,7 +27,7 @@ import UIKit
 
 extension UITableView {
   func getReusableCellWithIdentifier<T: UITableViewCell where T: TableViewCellIdentifiable>(indexPath: NSIndexPath) -> T {
-    guard let cell = self.dequeueReusableCellWithIdentifier(T.cellIdentifier, forIndexPath: indexPath) as? T else {
+    guard let cell = self.dequeueReusableCell(withIdentifier: T.cellIdentifier, for: indexPath as IndexPath) as? T else {
       fatalError("Couldn't instantiate view controller with identifier \(T.cellIdentifier) ")
     }
     
@@ -43,7 +43,7 @@ protocol TableViewCellIdentifiable {
 
 extension TableViewCellIdentifiable where Self: UITableViewCell {
   static var cellIdentifier: String {
-    return String(self)
+    return String(describing: self)
   }
 }
 
@@ -58,16 +58,16 @@ extension UIStoryboard {
     case Main
   }
   
-  convenience init(storyboard: Storyboard, bundle: NSBundle? = nil) {
+  convenience init(storyboard: Storyboard, bundle: Bundle? = nil) {
     self.init(name: storyboard.rawValue, bundle: bundle)
   }
   
-  class func storyboard(storyboard: Storyboard, bundle: NSBundle? = nil) -> UIStoryboard {
+  class func storyboard(storyboard: Storyboard, bundle: Bundle? = nil) -> UIStoryboard {
     return UIStoryboard(name: storyboard.rawValue, bundle: bundle)
   }
   
   func instantiateViewController<T: UIViewController where T: StoryboardIdentifiable>() -> T {
-    guard let viewController = self.instantiateViewControllerWithIdentifier(T.storyboardIdentifier) as? T else {
+    guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
       fatalError("Couldn't instantiate view controller with identifier \(T.storyboardIdentifier) ")
     }
     
@@ -85,6 +85,6 @@ protocol StoryboardIdentifiable {
 
 extension StoryboardIdentifiable where Self: UIViewController {
   static var storyboardIdentifier: String {
-    return String(self)
+    return String(describing: self)
   }
 }
