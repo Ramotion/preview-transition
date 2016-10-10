@@ -28,8 +28,18 @@ public class DemoTableViewController: PTTableViewController {
   fileprivate let items = [("1", "River cruise"), ("2", "North Island"), ("3", "Mountain trail"), ("4", "Southern Coast"), ("5", "Fishing place")] // image names
 }
 
-// MARK: UITableViewDelegate
+//extension DemoTableViewController {
+//  
+//  public override func viewDidLoad() {
+//    super.viewDidLoad()
+//    
+//    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//    navigationController?.navigationBar.shadowImage = UIImage()
+//    navigationController?.navigationBar.isTranslucent = true
+//  }
+//}
 
+// MARK: UITableViewDelegate
 extension DemoTableViewController {
   
   public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

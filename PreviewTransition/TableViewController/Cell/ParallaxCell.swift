@@ -134,11 +134,11 @@ extension ParallaxCell {
         $0.attribute = .centerY
         return
     }
-      titleLabel >>>- {
-        $0.attribute = .height
-        $0.constant = bounds.height + difference
-        return
-      }
+    titleLabel >>>- {
+      $0.attribute = .height
+      $0.constant = bounds.height + difference
+      return
+    }
     parallaxTitle = titleLabel
     
     separatorView = createSeparator(.black, height: 2.0, verticalAttribure: .bottom, verticalConstant: 0.0)

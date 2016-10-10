@@ -13,40 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
-  private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    configureStatusBar()
-    configureNavigationBar()
-    return true
-  }
-
-  func applicationWillResignActive(_ application: UIApplication) {
+  func applicationDidFinishLaunching(_ application: UIApplication) {
     
+    configureNavigationBar()
   }
-
-  func applicationDidEnterBackground(_ application: UIApplication) {
-   
-  }
-
-  func applicationWillEnterForeground(_ application: UIApplication) {
-  }
-
-  func applicationDidBecomeActive(_ application: UIApplication) {
-  }
-
-  func applicationWillTerminate(_ application: UIApplication) {
-  }
+  
 }
 
 extension AppDelegate {
   
   fileprivate func configureNavigationBar() {
-    
     //transparent background
     UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     UINavigationBar.appearance().shadowImage = UIImage()
     UINavigationBar.appearance().isTranslucent = true
-    UINavigationBar.appearance().tintColor = .white
+    
     
     if let font = UIFont(name: "Avenir-medium" , size: 18) {
       UINavigationBar.appearance().titleTextAttributes = [
@@ -54,15 +35,6 @@ extension AppDelegate {
         NSFontAttributeName : font
       ]
     }
-  }
-  
-  fileprivate func configureStatusBar() {
-//    guard  let statusBar = (UIApplication.shared.valueForKey("statusBarWindow") as AnyObject).value("statusBar") as? UIView else {
-//      return
-//    }
-//
-//    statusBar.backgroundColor = .clearColor()
-//    UIApplication.shared.statusBarStyle = .lightContent
   }
 }
 

@@ -14,6 +14,7 @@ extension UIImage {
     case HertIcon = "HertIcon"
     case PlusIcon = "PlusIcon"
     case ShareIcon = "ShareIcon"
+    case TransparentPixel = "TransparentPixel"
 
     var image: UIImage {
       return UIImage(asset: self)
