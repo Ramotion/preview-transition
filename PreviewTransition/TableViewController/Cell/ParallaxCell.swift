@@ -93,7 +93,7 @@ extension ParallaxCell {
   
   func commonInit() {
     
-    layer.masksToBounds = false
+    layer.masksToBounds = true
     selectionStyle = .none
     
     // create background image view
@@ -195,6 +195,7 @@ extension ParallaxCell {
     
     closedBgImageYConstant = bgImageY.constant
     closedYPosition = center.y
+    separatorView?.isHidden = true
     
     let offsetY = tableView.contentOffset.y
     let cellY = frame.origin.y - offsetY + frame.size.height / 2.0 + offsetY - tableView.frame.size.height / 2.0
@@ -210,12 +211,14 @@ extension ParallaxCell {
   
   func closeCell(_ duration: Double, tableView: UITableView, completion: @escaping () -> Void) {
     bgImageY?.constant = closedBgImageYConstant
-    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { [weak self] () in
+      guard let `self` = self else { return }
       self.layoutIfNeeded()
       self.center = CGPoint(x: self.center.x, y: self.closedYPosition)
-      }, completion: {finished in
+      }, completion: {[weak self] finished in
         
-      self.parallaxTitle?.isHidden = false
+        self?.separatorView?.isHidden = false
+        self?.parallaxTitle?.isHidden = false
         completion()
     })
     
