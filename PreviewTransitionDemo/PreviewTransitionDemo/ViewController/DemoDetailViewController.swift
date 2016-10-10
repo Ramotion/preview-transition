@@ -48,13 +48,13 @@ extension DemoDetailViewController {
     super.viewDidLoad()
     
     backButton = createBackButton()
-    createNavigationBarBackItem(button: backButton)
+    let _ = createNavigationBarBackItem(button: backButton)
     
     // animations
     showBackButtonDuration(duration: 0.3)
     showControlViewDuration(duration: 0.3)
     
-    createBlurView()
+     let _ = createBlurView()
   }
 }
 

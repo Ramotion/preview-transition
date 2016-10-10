@@ -382,7 +382,7 @@
 				TargetAttributes = {
 					84204DF81CB2869E001FC263 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = LEAZS7L33U;
+						DevelopmentTeam = 34MUF9YXTA;
 						LastSwiftMigration = 0800;
 					};
 					84204E0C1CB2869E001FC263 = {
@@ -588,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -629,7 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -644,8 +644,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 34MUF9YXTA;
 				INFOPLIST_FILE = PreviewTransitionDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.PreviewTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -661,8 +662,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 34MUF9YXTA;
 				INFOPLIST_FILE = PreviewTransitionDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.PreviewTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

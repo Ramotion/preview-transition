@@ -275,6 +275,7 @@ extension ParallaxCell {
         $0.attribute = .height
         $0.constant = 64
         $0.identifier = "Height"
+        return
       }
     } else {
       let currentConstrant = foregroundView.constraints.filter{return $0.identifier == "Height" ? true : false}
@@ -283,6 +284,7 @@ extension ParallaxCell {
       (contentView, foregroundView) >>>- {
         $0.attribute = .bottom
         $0.identifier = "Bottom"
+        return
       }
     }
     
@@ -373,6 +375,7 @@ extension ParallaxCell {
     (contentView, foregroundView) >>>- {
       $0.attribute = .bottom
       $0.identifier = "Bottom"
+      return
     }
     
     return foregroundView
@@ -395,11 +398,13 @@ extension ParallaxCell {
     (contentView, separator) >>>- {
       $0.attribute = verticalAttribure
       $0.constant = verticalConstant
+      return
     }
     // height constraint
     separator >>>- {
       $0.attribute = .height
       $0.constant = height
+      return
     }
     return separator
   }

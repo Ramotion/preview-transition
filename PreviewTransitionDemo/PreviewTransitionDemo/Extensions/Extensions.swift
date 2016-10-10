@@ -26,7 +26,7 @@ import UIKit
 // MARK: tableview
 
 extension UITableView {
-  func getReusableCellWithIdentifier<T: UITableViewCell where T: TableViewCellIdentifiable>(indexPath: NSIndexPath) -> T {
+  func getReusableCellWithIdentifier<T: UITableViewCell>(indexPath: IndexPath) -> T where T: TableViewCellIdentifiable {
     guard let cell = self.dequeueReusableCell(withIdentifier: T.cellIdentifier, for: indexPath as IndexPath) as? T else {
       fatalError("Couldn't instantiate view controller with identifier \(T.cellIdentifier) ")
     }
@@ -66,7 +66,7 @@ extension UIStoryboard {
     return UIStoryboard(name: storyboard.rawValue, bundle: bundle)
   }
   
-  func instantiateViewController<T: UIViewController where T: StoryboardIdentifiable>() -> T {
+  func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
     guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
       fatalError("Couldn't instantiate view controller with identifier \(T.storyboardIdentifier) ")
     }

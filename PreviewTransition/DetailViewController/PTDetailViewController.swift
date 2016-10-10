@@ -53,7 +53,7 @@ extension  PTDetailViewController {
       }
     }
     
-    createNavBar(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
+    let _ = createNavBar(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
   }
   
   open override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +76,7 @@ extension PTDetailViewController {
         label.isHidden = false
       }
     }
-    navigationController?.popViewController(animated: false)
+    let _ = navigationController?.popViewController(animated: false)
   }
 }
 

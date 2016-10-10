@@ -36,11 +36,8 @@ extension DemoTableViewController {
     return 100
   }
   
-  public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    
-    guard let cell = cell as? ParallaxCell else {
-      return
-    }
+  public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    guard let cell = cell as? ParallaxCell else { return }
     
     let index = indexPath.row % items.count
     let imageName = items[index].0
@@ -51,14 +48,15 @@ extension DemoTableViewController {
     }
   }
   
-  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: ParallaxCell = tableView.getReusableCellWithIdentifier(indexPath: indexPath)
     return cell
   }
   
-  public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let storyboard = UIStoryboard.storyboard(storyboard: .Main)
     let detaleViewController: DemoDetailViewController = storyboard.instantiateViewController()
     pushViewController(detaleViewController)
   }
+
 }

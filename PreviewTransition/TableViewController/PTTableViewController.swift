@@ -163,9 +163,9 @@ extension PTTableViewController {
   
   fileprivate func parallaxOffsetDidChange(_ offset: CGFloat) {
     
-    for case let cell as ParallaxCell in tableView.visibleCells where cell != currentCell {
-      cell.parallaxOffset(tableView)
-    }
+    let _ = tableView.visibleCells
+      .filter{$0 != currentCell }
+      .forEach { if case let cell as ParallaxCell = $0 { cell.parallaxOffset(tableView) } }
   }
   
   fileprivate func moveCellsBackIfNeed(_ duration: Double, completion: @escaping () -> Void) {

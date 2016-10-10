@@ -24,17 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func applicationDidEnterBackground(application: UIApplication) {
+  func applicationDidEnterBackground(_ application: UIApplication) {
    
   }
 
-  func applicationWillEnterForeground(application: UIApplication) {
+  func applicationWillEnterForeground(_ application: UIApplication) {
   }
 
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
   }
 
-  func applicationWillTerminate(application: UIApplication) {
+  func applicationWillTerminate(_ application: UIApplication) {
   }
 }
 
