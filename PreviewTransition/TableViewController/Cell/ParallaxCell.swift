@@ -23,6 +23,14 @@
 
 import UIKit
 
+fileprivate struct C {
+  
+  struct Constraints {
+    static let bottom = "Bottom"
+    static let height = "Height"
+  }
+}
+
 /// UITableViewCell with parallax background
 open class ParallaxCell: UITableViewCell {
   
@@ -92,7 +100,7 @@ extension ParallaxCell {
   
   func commonInit() {
     
-    layer.masksToBounds = true
+    layer.masksToBounds = false
     selectionStyle = .none
     
     // create background image view
@@ -193,7 +201,6 @@ extension ParallaxCell {
     
     closedBgImageYConstant = bgImageY.constant
     closedYPosition = center.y
-    separatorView?.isHidden = true
     
     let offsetY = tableView.contentOffset.y
     let cellY = frame.origin.y - offsetY + frame.size.height / 2.0 + offsetY - tableView.frame.size.height / 2.0
@@ -215,7 +222,6 @@ extension ParallaxCell {
       self.center = CGPoint(x: self.center.x, y: self.closedYPosition)
       }, completion: {[weak self] finished in
         
-        self?.separatorView?.isHidden = false
         self?.parallaxTitle?.isHidden = false
         completion()
     })
@@ -268,22 +274,22 @@ extension ParallaxCell {
     }
     
     if hidden == true {
-      let currentConstrant = contentView.constraints.filter{return $0.identifier == "Bottom" ? true : false}
+      let currentConstrant = contentView.constraints.filter{return $0.identifier == C.Constraints.bottom ? true : false}
       contentView.removeConstraints(currentConstrant)
       
       foregroundView >>>- {
         $0.attribute = .height
         $0.constant = 64
-        $0.identifier = "Height"
+        $0.identifier = C.Constraints.height
         return
       }
     } else {
-      let currentConstrant = foregroundView.constraints.filter{return $0.identifier == "Height" ? true : false}
+      let currentConstrant = foregroundView.constraints.filter{return $0.identifier == C.Constraints.height ? true : false}
       foregroundView.removeConstraints(currentConstrant)
       
       (contentView, foregroundView) >>>- {
         $0.attribute = .bottom
-        $0.identifier = "Bottom"
+        $0.identifier = C.Constraints.bottom
         return
       }
     }
@@ -372,7 +378,7 @@ extension ParallaxCell {
     }
     (contentView, foregroundView) >>>- {
       $0.attribute = .bottom
-      $0.identifier = "Bottom"
+      $0.identifier = C.Constraints.bottom
       return
     }
     
