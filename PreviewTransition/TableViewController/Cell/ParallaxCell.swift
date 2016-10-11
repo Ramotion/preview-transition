@@ -88,7 +88,6 @@ open class ParallaxCell: UITableViewCell {
 }
 
 // MARK: life cicle
-
 extension ParallaxCell {
   
   func commonInit() {
@@ -169,7 +168,6 @@ public extension ParallaxCell {
 }
 
 // MARK: internal
-
 extension ParallaxCell {
   
   func parallaxOffset(_ tableView: UITableView) {
@@ -213,7 +211,7 @@ extension ParallaxCell {
     bgImageY?.constant = closedBgImageYConstant
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { [weak self] () in
       guard let `self` = self else { return }
-      self.layoutIfNeeded()
+      self.bgImage?.superview?.layoutIfNeeded()
       self.center = CGPoint(x: self.center.x, y: self.closedYPosition)
       }, completion: {[weak self] finished in
         
@@ -254,14 +252,13 @@ extension ParallaxCell {
 }
 
 // MARK: animation
-
 extension ParallaxCell {
   
   fileprivate func moveToCenter(_ duration: Double, offset: CGFloat) {
     bgImageY?.constant = 0
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.78, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
-      self.frame = CGRect(x: 0, y: offset, width: self.frame.size.width, height: self.frame.size.height)
-      self.layoutIfNeeded()
+      self.frame.origin.y = offset
+      self.bgImage?.superview?.layoutIfNeeded()
     }, completion: nil)
   }
   
@@ -297,13 +294,12 @@ extension ParallaxCell {
                                initialSpringVelocity: 0,
                                options: UIViewAnimationOptions(),
                                animations: { () -> Void in
-      self.layoutIfNeeded()
+      foregroundView.superview?.layoutIfNeeded()
     }, completion: nil)
   }
 }
 
 // MARK: create 
-
 extension ParallaxCell {
   
   fileprivate func createBckgroundImage() -> UIImageView {
@@ -353,7 +349,6 @@ extension ParallaxCell {
 }
 
 // MARK: cofigure
-
 extension ParallaxCell {
   
   fileprivate func createForegroundView(_ color: UIColor) -> UIView {
