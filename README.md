@@ -20,7 +20,7 @@ We specialize in the designing and coding of custom UI for Mobile Apps and Websi
 <a href="https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
 </p>
 
-The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) available [here](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition).
+The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) available [here](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition).
 
 ## Try this UI control in action
 
