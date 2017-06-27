@@ -1,4 +1,4 @@
-[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
+[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
 # Preview-transition 
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
@@ -13,7 +13,7 @@
 This project is maintained by Ramotion, Inc.<br>
 We specialize in the designing and coding of custom UI for Mobile Apps and Websites.<br><br>**Looking for developers for your project?** 
 
-<a href="https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch" > <img src="https://github.com/Ramotion/navigation-stack/raw/master/contact_our_team@2x.png" width="150" height="30"></a>
+<a href="https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch" > <img src="https://github.com/Ramotion/navigation-stack/raw/master/contact_our_team@2x.png" width="150" height="30"></a>
 
 
 <p align="center">
