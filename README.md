@@ -1,30 +1,25 @@
-[![header](https://raw.githubusercontent.com/Ramotion/preview-transition/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
+[![header](./header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
+![Animation](./preview.gif)
 # Preview-transition 
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
 [![CocoaPods](https://img.shields.io/cocoapods/p/PreviewTransition.svg)](https://cocoapods.org/pods/PreviewTransition)
 [![CocoaPods](https://img.shields.io/cocoapods/v/PreviewTransition.svg)](http://cocoapods.org/pods/PreviewTransition)
-[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/PreviewTransition.svg)](https://cdn.rawgit.com/Ramotion/preview-transition/master/docs/index.html)
 [![codebeat badge](https://codebeat.co/badges/b99f71fe-b7e7-4a08-94bd-d98307d176ea)](https://codebeat.co/projects/github-com-ramotion-preview-transition)
 
 
 ## About
 This project is maintained by Ramotion, Inc.<br>
-We specialize in the designing and coding of custom UI for Mobile Apps and Websites.<br><br>**Looking for developers for your project?** 
+We specialize in the designing and coding of custom UI for Mobile Apps and Websites.<br>
 
-<a href="https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch" > <img src="https://github.com/Ramotion/navigation-stack/raw/master/contact_our_team@2x.png" width="150" height="30"></a>
+**Looking for developers for your project?**<br>
+This project is maintained by Ramotion, Inc. We specialize in the designing and coding of custom UI for Mobile Apps and Websites.
 
-
-<p align="center">
-<a href="https://dribbble.com/shots/2724735-iOS-Preview-Transition-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/preview-transition/master/preview.gif" width="890" height="668" alt="StackViewController Example App" /></a>
-</p>
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch"> 
+<img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a> <br>
 
 The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) available [here](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition).
-
-## Try this UI control in action
-
-<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=gthb-preview-transition&mt=8" > <img src="https://github.com/Ramotion/navigation-stack/raw/master/Download_on_the_App_Store_Badge_US-UK_135x40.png" width="170" height="58"></a>
 
 ## Requirements
 
@@ -145,8 +140,19 @@ if let font = UIFont(name: <Font name> , size: 18) {
       ]
 }
 ```
+# Get the Showroom App for iOS to give it a try
+Try this UI component and more like this in our iOS app. Contact us if interested.
 
-## Follow us
+<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=preview-transition&mt=8" > 
+<img src="https://github.com/ramotion/gliding-collection/raw/master/app_store@2x.png" width="117" height="34"></a>
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch"> 
+<img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a>
+<br>
+<br>
 
+Follow us for the latest updates<br>
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/preview-transition)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
+
+
+
