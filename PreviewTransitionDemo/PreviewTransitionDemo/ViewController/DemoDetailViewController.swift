@@ -121,7 +121,7 @@ extension DemoDetailViewController {
 extension DemoDetailViewController {
   
   fileprivate func showBackButtonDuration(duration: Double) {
-    backButton?.rotateDuration(duration: duration, from: CGFloat(-M_PI_4), to: 0)
+    backButton?.rotateDuration(duration: duration, from: -CGFloat.pi / 4, to: 0)
     backButton?.scaleDuration(duration: duration, from: 0.5, to: 1)
     backButton?.opacityDuration(duration: duration, from: 0, to: 1)
   }
@@ -144,7 +144,7 @@ extension DemoDetailViewController {
 
   fileprivate func showControlButtonsDuration(duration: Double) {
     [plusImageView, shareImageView, hertIconView].forEach {
-      $0?.rotateDuration(duration: duration, from: CGFloat(-M_PI_4), to: 0, delay: duration)
+      $0?.rotateDuration(duration: duration, from: CGFloat.pi / 4, to: 0, delay: duration)
       $0?.scaleDuration(duration: duration, from: 0.5, to: 1, delay: duration)
       $0?.alpha = 0
       $0?.opacityDuration(duration: duration, from: 0, to: 1, delay: duration, remove: false)
@@ -171,7 +171,7 @@ extension DemoDetailViewController {
 
 extension DemoDetailViewController {
   
-  func backButtonHandler() {
+  @objc func backButtonHandler() {
     popViewController()
   }
 }

@@ -342,11 +342,11 @@ extension ParallaxCell {
     label.backgroundColor = .clear
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
-    if case let font as UIFont = UINavigationBar.appearance().titleTextAttributes?[NSFontAttributeName] {
+    if case let font as UIFont = UINavigationBar.appearance().titleTextAttributes?[NSAttributedStringKey.font] {
       label.font = font
     }
     
-    if case let textColor as UIColor = UINavigationBar.appearance().titleTextAttributes?[NSForegroundColorAttributeName] {
+    if case let textColor as UIColor = UINavigationBar.appearance().titleTextAttributes?[NSAttributedStringKey.foregroundColor] {
       label.textColor = textColor
     }
     contentView.addSubview(label)

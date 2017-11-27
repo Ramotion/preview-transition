@@ -43,7 +43,7 @@ extension UIImageView {
     blurfilter.setValue(imageToBlur, forKey: "inputImage")
     let resultImage = blurfilter.value(forKey: "outputImage") as! CIImage
     var blurredImage = UIImage(ciImage: resultImage)
-    let cropped:CIImage=resultImage.cropping(to: CGRect(x: 0, y: 0, width: imageToBlur.extent.size.width, height: imageToBlur.extent.size.height))
+    let cropped:CIImage=resultImage.cropped(to: CGRect(x: 0, y: 0, width: imageToBlur.extent.size.width, height: imageToBlur.extent.size.height))
     blurredImage = UIImage(ciImage: cropped)
     self.image = blurredImage
   }
