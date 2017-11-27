@@ -1,6 +1,6 @@
 [![header](./header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
 ![Animation](./preview.gif)
-# Preview-transition 
+# Preview-transition
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/preview-transition)
@@ -16,7 +16,7 @@ We specialize in the designing and coding of custom UI for Mobile Apps and Websi
 **Looking for developers for your project?**<br>
 This project is maintained by Ramotion, Inc. We specialize in the designing and coding of custom UI for Mobile Apps and Websites.
 
-<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch"> 
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch">
 <img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a> <br>
 
 The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition) available [here](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition).
@@ -24,7 +24,7 @@ The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=specia
 ## Requirements
 
 - iOS 9.0+
-- Xcode 8
+- Xcode 9
 
 ## Licence
 
@@ -35,9 +35,7 @@ See [LICENSE](./LICENSE) for details.
 
 Just add the Source folder to your project or use [CocoaPods](https://cocoapods.org) like this:
 ``` ruby
-pod "PreviewTransition", "~> 2.0.1" swift 3
-
-pod "PreviewTransition", "~> 1.1.5" swift 2
+pod "PreviewTransition"
 ```
 
 or [Carthage](https://github.com/Carthage/Carthage) users can simply add to their `Cartfile`:
@@ -143,9 +141,9 @@ if let font = UIFont(name: <Font name> , size: 18) {
 # Get the Showroom App for iOS to give it a try
 Try this UI component and more like this in our iOS app. Contact us if interested.
 
-<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=preview-transition&mt=8" > 
+<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=preview-transition&mt=8" >
 <img src="https://github.com/ramotion/gliding-collection/raw/master/app_store@2x.png" width="117" height="34"></a>
-<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch"> 
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-contact-us/#Get_in_Touch">
 <img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a>
 <br>
 <br>
@@ -153,6 +151,3 @@ Try this UI component and more like this in our iOS app. Contact us if intereste
 Follow us for the latest updates<br>
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/preview-transition)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
-
-
-
