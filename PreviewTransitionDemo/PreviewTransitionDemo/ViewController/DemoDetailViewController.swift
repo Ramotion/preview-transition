@@ -26,10 +26,10 @@ import UIKit
 
 public class DemoDetailViewController: PTDetailViewController {
   
-  @IBOutlet weak var controlHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var controlBottomConstrant: NSLayoutConstraint!
   
   // bottom control icons
+  @IBOutlet weak var controlsViewContainer: UIView!
   @IBOutlet weak var controlView: UIView!
   @IBOutlet weak var plusImageView: UIImageView!
   @IBOutlet weak var controlTextLabel: UILabel!
@@ -38,6 +38,14 @@ public class DemoDetailViewController: PTDetailViewController {
   @IBOutlet weak var hertIconView: UIImageView!
   
   var backButton: UIButton?
+    
+  var bottomSafeArea: CGFloat {
+    var result: CGFloat = 0
+    if #available(iOS 11.0, *) {
+      result = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+    }
+    return result
+  }
 }
 
 // MARK: life cicle
@@ -80,39 +88,24 @@ extension DemoDetailViewController {
   }
   
   fileprivate func createBlurView() -> UIView {
-    let imageFrame = CGRect(x: 0, y: view.frame.size.height - controlHeightConstraint.constant, width: view.frame.width, height: controlHeightConstraint.constant)
+    let height = controlView.bounds.height + bottomSafeArea
+    let imageFrame = CGRect(x: 0, y: view.frame.size.height - height, width: view.frame.width, height: height)
     let image = view.makeScreenShotFromFrame(frame: imageFrame)
     let screnShotImageView = UIImageView(image: image)
-    screnShotImageView.translatesAutoresizingMaskIntoConstraints = false
     screnShotImageView.blurViewValue(value: 5)
-    controlView.insertSubview(screnShotImageView, at: 0)
-    // added constraints
-    [NSLayoutAttribute.left, .right, .bottom, .top].forEach { attribute in
-      (self.controlView, screnShotImageView) >>>- {
-        $0.attribute = attribute
-        return
-      }
-    }
-    
-    createMaskView(onView: screnShotImageView)
-    
+    screnShotImageView.frame = controlsViewContainer.bounds
+    screnShotImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    controlsViewContainer.insertSubview(screnShotImageView, at: 0)
+    addOverlay(toView: screnShotImageView)
     return screnShotImageView
   }
 
-  fileprivate func createMaskView(onView: UIView) {
-    let blueView = UIView(frame: CGRect.zero)
-    blueView.backgroundColor = .black
-    blueView.translatesAutoresizingMaskIntoConstraints = false
-    blueView.alpha = 0.4
-    onView.addSubview(blueView)
-    
-    // add constraints
-    [NSLayoutAttribute.left, .right, .bottom, .top].forEach { attribute in
-      (onView, blueView) >>>- {
-        $0.attribute = attribute
-        return
-      }
-    }
+  fileprivate func addOverlay(toView view: UIView) {
+    let overlayView = UIView(frame: view.bounds)
+    overlayView.backgroundColor = .black
+    overlayView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    overlayView.alpha = 0.4
+    view.addSubview(overlayView)
   }
 }
 
@@ -133,7 +126,8 @@ extension DemoDetailViewController {
   }
   
   fileprivate func moveUpControllerDuration(duration: Double) {
-    controlBottomConstrant.constant = -controlHeightConstraint.constant
+
+    controlBottomConstrant.constant = -controlsViewContainer.bounds.height
     view.layoutIfNeeded()
     
     controlBottomConstrant.constant = 0

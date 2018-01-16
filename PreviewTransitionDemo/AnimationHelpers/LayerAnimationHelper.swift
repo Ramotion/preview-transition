@@ -1,5 +1,5 @@
 //
-//  LayerAnimationHalper.swift
+//  LayerAnimationHelper.swift
 //  PreviewTransitionDemo
 //
 //  Created by Alex K. on 03/05/16.

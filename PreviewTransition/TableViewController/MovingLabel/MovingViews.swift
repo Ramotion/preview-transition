@@ -48,7 +48,13 @@ extension Moving where Self: UIView {
       var toYPosition = self.defaultYPosition
       if direction == .up {
         self.defaultYPosition = self.frame.origin.y
-        toYPosition = 20
+        var position: CGFloat = 20
+        if #available(iOS 11.0, *) {
+          if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+            position = topPadding
+          }
+        }
+        toYPosition = position
       }
       self.frame = CGRect(x: 0, y: toYPosition, width: self.frame.size.width, height: self.frame.size.height)
     }, completion: completion)

@@ -55,11 +55,6 @@ extension  PTDetailViewController {
     
     let _ = createNavBar(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
   }
-  
-  open override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-  }
 }
 
 // MARK: public
@@ -85,30 +80,13 @@ extension PTDetailViewController {
 extension PTDetailViewController {
   
   fileprivate func createBackgroundImage(_ image: UIImage?) -> UIImageView {
-    // add constraint closures
-    let addConstraint: (_ imageView: UIImageView, _ toView: UIView, _ attribute: NSLayoutAttribute) -> () = {
-      (imageView, toView, attribute) in
-      let constraint = NSLayoutConstraint(item: imageView,
-        attribute: attribute,
-        relatedBy: .equal,
-        toItem: toView,
-        attribute: attribute,
-        multiplier: 1,
-        constant: 0)
-      toView.addConstraint(constraint)
-    }
     
-    // crate imageView
     let imageView = UIImageView(frame: CGRect.zero)
     imageView.image = image
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.contentMode = .center
+    imageView.frame = view.bounds
+    imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    imageView.contentMode = UIViewContentMode.scaleAspectFill
     view.insertSubview(imageView, at: 0)
-    
-    // added constraints
-    for attribute in [NSLayoutAttribute.leading, NSLayoutAttribute.trailing, NSLayoutAttribute.top, NSLayoutAttribute.bottom] {
-      addConstraint(imageView, view, attribute)
-    }
     
     return imageView
   }
@@ -127,7 +105,13 @@ extension PTDetailViewController {
     }
     navBar >>>- {
       $0.attribute = .height
-      $0.constant = 64
+      var constant: CGFloat = 64
+      if #available(iOS 11.0, *) {
+        if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+          constant += topPadding
+        }
+      }
+      $0.constant = constant
       return
     }
     

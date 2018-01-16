@@ -57,5 +57,4 @@ extension DemoTableViewController {
     let detaleViewController: DemoDetailViewController = storyboard.instantiateViewController()
     pushViewController(detaleViewController)
   }
-
 }

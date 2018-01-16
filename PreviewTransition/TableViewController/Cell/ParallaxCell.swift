@@ -44,9 +44,10 @@ open class ParallaxCell: UITableViewCell {
     case down
   }
   
-  var bgImageY: NSLayoutConstraint?
+  private var bgImageY: NSLayoutConstraint?
+  private var bgImageHeight: NSLayoutConstraint?
   
-  var parallaxTitleY: NSLayoutConstraint?
+  private var parallaxTitleY: NSLayoutConstraint?
   
   /// parallax offset
   @IBInspectable open var difference: CGFloat = 100 // image parallax
@@ -65,7 +66,7 @@ open class ParallaxCell: UITableViewCell {
   
   fileprivate var closedBgImageYConstant: CGFloat = 0
   fileprivate var closedYPosition: CGFloat = 0
-  
+    
   fileprivate var damping: CGFloat = 0.78
   
   /**
@@ -118,7 +119,7 @@ extension ParallaxCell {
         $0.attribute = .centerY
         return
       }
-      backgroundImageView >>>- {
+      bgImageHeight = backgroundImageView >>>- {
         $0.attribute = .height
         $0.constant = bounds.height + difference
         return
@@ -209,6 +210,7 @@ extension ParallaxCell {
     superview.sendSubview(toBack: self)
     
     // animation
+    bgImageHeight?.constant = cellFrame.height
     moveToCenter(duration , offset: offsetY)
     parallaxTitle?.isHidden = true
     foregroundHidden(true, duration: duration)
@@ -216,6 +218,7 @@ extension ParallaxCell {
   
   func closeCell(_ duration: Double, tableView: UITableView, completion: @escaping () -> Void) {
     bgImageY?.constant = closedBgImageYConstant
+    bgImageHeight?.constant = bounds.height + difference
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { [weak self] () in
       guard let `self` = self else { return }
       self.bgImage?.superview?.layoutIfNeeded()
@@ -279,7 +282,13 @@ extension ParallaxCell {
       
       foregroundView >>>- {
         $0.attribute = .height
-        $0.constant = 64
+        var constant: CGFloat = 64
+        if #available(iOS 11.0, *) {
+          if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+            constant += topPadding
+          }
+        }
+        $0.constant = constant
         $0.identifier = C.Constraints.height
         return
       }
@@ -310,31 +319,24 @@ extension ParallaxCell {
   
   fileprivate func createBckgroundImage() -> UIImageView {
     
-    let container = createImageContainer()
-    let imageView = UIImageView()
+    let container = UIView(frame: contentView.bounds)
+    container.translatesAutoresizingMaskIntoConstraints = false
+    container.backgroundColor = .red
+    container.clipsToBounds = true
+    contentView.addSubview(container)
+    for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
+        (contentView, container) >>>- {
+            $0.attribute = attribute
+            return
+        }
+    }
+    
+    let imageView = UIImageView(frame: container.bounds)
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.contentMode = .center
+    imageView.contentMode = .scaleAspectFill
     container.addSubview(imageView)
     return imageView
   }
-  
-  fileprivate func createImageContainer() -> UIView {
-    let view = UIView(frame: CGRect.zero)
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.layer.masksToBounds = true
-    contentView.addSubview(view)
-    
-    // added constraints
-    for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
-      (contentView, view) >>>- {
-        $0.attribute = attribute
-        return
-      }
-    }
-    
-    return view
-  }
-
   
   fileprivate func createTitleLable() -> UILabel {
     

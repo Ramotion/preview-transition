@@ -39,7 +39,7 @@ open class PTTableViewController: UITableViewController {
   
   internal var currentCell: ParallaxCell?
   
-  fileprivate var duration: Double = 0.65
+  fileprivate var duration: Double = 0.8
   fileprivate var currentTextLabel: MovingLabel?
 }
 
@@ -68,7 +68,7 @@ public extension PTTableViewController {
     }
     
     
-    self.currentTextLabel = createTitleLable(currentCell)
+    currentTextLabel = createTitleLable(currentCell)
     currentTextLabel?.move(duration, direction: .up, completion: nil)
     
     currentCell.openCell(tableView, duration: duration)
@@ -91,9 +91,13 @@ extension PTTableViewController {
   
   open override func viewDidLoad() {
     super.viewDidLoad()
-    
-    tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     tableView.separatorStyle = .none
+    
+    if #available(iOS 11.0, *) {
+      tableView.contentInsetAdjustmentBehavior = .never
+    } else {
+      tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+    }
   }
   
   open override func viewWillAppear(_ animated: Bool) {
