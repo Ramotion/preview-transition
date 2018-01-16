@@ -66,7 +66,8 @@ open class ParallaxCell: UITableViewCell {
 
     fileprivate var closedBgImageYConstant: CGFloat = 0
     fileprivate var closedYPosition: CGFloat = 0
-
+    fileprivate var closedHeight: CGFloat = 0
+    
     fileprivate var damping: CGFloat = 0.78
 
     /**
@@ -197,12 +198,14 @@ extension ParallaxCell {
 
     func openCell(_ tableView: UITableView, duration: Double) {
         guard let superview = self.superview,
-            let bgImageY = self.bgImageY else {
+            let bgImageY = self.bgImageY,
+            let bgImageHeight = self.bgImageHeight else {
             return
         }
 
         closedBgImageYConstant = bgImageY.constant
         closedYPosition = center.y
+        closedHeight = bgImageHeight.constant
 
         let offsetY = tableView.contentOffset.y
         let cellY = frame.origin.y - offsetY + frame.size.height / 2.0 + offsetY - tableView.frame.size.height / 2.0
@@ -211,7 +214,7 @@ extension ParallaxCell {
         superview.sendSubview(toBack: self)
 
         // animation
-        bgImageHeight?.constant = cellFrame.height
+        bgImageHeight.constant = cellFrame.height
         moveToCenter(duration, offset: offsetY)
         parallaxTitle?.isHidden = true
         foregroundHidden(true, duration: duration)
@@ -219,7 +222,7 @@ extension ParallaxCell {
 
     func closeCell(_ duration: Double, tableView _: UITableView, completion: @escaping () -> Void) {
         bgImageY?.constant = closedBgImageYConstant
-        bgImageHeight?.constant = bounds.height + difference
+        bgImageHeight?.constant = closedHeight
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { [weak self] () in
             guard let `self` = self else { return }
             self.bgImage?.superview?.layoutIfNeeded()
@@ -324,7 +327,7 @@ extension ParallaxCell {
 
         let container = UIView(frame: contentView.bounds)
         container.translatesAutoresizingMaskIntoConstraints = false
-        container.backgroundColor = .red
+        container.backgroundColor = .clear
         container.clipsToBounds = true
         contentView.addSubview(container)
         for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
