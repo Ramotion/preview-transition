@@ -56,10 +56,18 @@ open class ParallaxCell: UITableViewCell {
     var parallaxTitle: UILabel?
 
     /// The foreground view’s background color.
-    @IBInspectable open var foregroundColor = UIColor.black
+    @IBInspectable open var foregroundColor: UIColor = UIColor.black {
+        didSet {
+            foregroundView?.backgroundColor = foregroundColor
+        }
+    }
 
     /// The foreground view’s alpha.
-    @IBInspectable open var foregroundAlpha: CGFloat = 0.5
+    @IBInspectable open var foregroundAlpha: CGFloat = 0.5 {
+        didSet {
+            foregroundView?.alpha = foregroundAlpha
+        }
+    }
 
     var foregroundView: UIView?
     var isMovedHidden: Bool = false
