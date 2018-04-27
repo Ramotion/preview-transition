@@ -1,5 +1,7 @@
 [![header](./header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=preview-transition-logo)
-![Animation](./preview.gif)
+<img src="https://github.com/Ramotion/preview-transition/blob/master/preview-transition.gif" width="600" height="450" />
+<br><br/>
+
 # Preview-transition
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/preview-transition.svg)](https://travis-ci.org/Ramotion/preview-transition.svg?branch=master)
