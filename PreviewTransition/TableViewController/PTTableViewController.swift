@@ -62,7 +62,7 @@ public extension PTTableViewController {
             let nextIndex = IndexPath(row: (currentIndex as NSIndexPath).row + 1, section: (currentIndex as NSIndexPath).section)
             if case let nextCell as ParallaxCell = tableView.cellForRow(at: nextIndex) {
                 nextCell.showTopSeparator()
-                nextCell.superview?.bringSubview(toFront: nextCell)
+                nextCell.superview?.bringSubviewToFront(nextCell)
             }
         }
 
@@ -94,7 +94,7 @@ extension PTTableViewController {
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
-            tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0)
+            tableView.contentInset = UIEdgeInsets.init(top: -64, left: 0, bottom: 0, right: 0)
         }
     }
 

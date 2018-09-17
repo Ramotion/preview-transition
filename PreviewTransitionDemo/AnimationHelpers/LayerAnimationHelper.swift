@@ -15,11 +15,11 @@ extension UIView {
         animation.duration = duration
         animation.toValue = to
         animation.fromValue = from
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         animation.beginTime = CACurrentMediaTime() + delay
         if remove == false {
             animation.isRemovedOnCompletion = remove
-            animation.fillMode = kCAFillModeForwards
+            animation.fillMode = CAMediaTimingFillMode.forwards
         }
         return animation
     }

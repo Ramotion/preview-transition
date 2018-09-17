@@ -28,8 +28,8 @@ extension AppDelegate {
 
         if let font = UIFont(name: "Avenir-medium", size: 18) {
             UINavigationBar.appearance().titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor.white,
-                NSAttributedStringKey.font: font,
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: font,
             ]
         }
     }

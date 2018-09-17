@@ -85,7 +85,7 @@ extension PTDetailViewController {
         imageView.image = image
         imageView.frame = view.bounds
         imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
         view.insertSubview(imageView, at: 0)
 
         return imageView
@@ -97,7 +97,7 @@ extension PTDetailViewController {
         navBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(navBar)
 
-        for attributes: NSLayoutAttribute in [.left, .right, .top] {
+        for attributes: NSLayoutConstraint.Attribute in [.left, .right, .top] {
             (view, navBar) >>>- {
                 $0.attribute = attributes
                 return

@@ -280,7 +280,6 @@
 				84204DF51CB2869E001FC263 /* Sources */,
 				84204DF61CB2869E001FC263 /* Frameworks */,
 				84204DF71CB2869E001FC263 /* Resources */,
-				8485264F1CD39C880052BEAD /* image enum gen */,
 				8499D8C31D006020004B5B37 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -324,12 +323,12 @@
 					84204DF81CB2869E001FC263 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 34MUF9YXTA;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 					8499D8B61D006020004B5B37 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = LEAZS7L33U;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -371,23 +370,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8485264F1CD39C880052BEAD /* image enum gen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "image enum gen";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\nswiftgen images \"$PROJECT_DIR/PreviewTransitionDemo/Assets.xcassets\" --output \"$PROJECT_DIR/Constants/Images.swift\"\nelse\necho \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84204DF51CB2869E001FC263 /* Sources */ = {
@@ -571,8 +553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -590,8 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -612,8 +592,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.PreivewTransition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -637,8 +616,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.PreivewTransition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

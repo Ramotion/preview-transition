@@ -42,7 +42,7 @@ extension Moving where Self: UIView {
                        delay: 0,
                        usingSpringWithDamping: 0.78,
                        initialSpringVelocity: 0,
-                       options: UIViewAnimationOptions(),
+                       options: UIView.AnimationOptions(),
                        animations: { [weak self] () -> Void in
                            guard let `self` = self else { return }
                            var toYPosition = self.defaultYPosition
@@ -78,7 +78,7 @@ internal class MovingView: UIView {
                        delay: 0,
                        usingSpringWithDamping: 0.78,
                        initialSpringVelocity: 0,
-                       options: UIViewAnimationOptions(),
+                       options: UIView.AnimationOptions(),
                        animations: { () -> Void in
                            self.frame.origin.y = yPosition
         }, completion: completion)
