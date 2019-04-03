@@ -51,7 +51,7 @@ public extension PTTableViewController {
 
      - parameter viewController: The view controller to push onto the stack.
      */
-    public func pushViewController(_ viewController: PTDetailViewController) {
+    func pushViewController(_ viewController: PTDetailViewController) {
 
         guard let currentCell = currentCell,
             let navigationController = self.navigationController else {
